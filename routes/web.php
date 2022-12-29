@@ -4,7 +4,7 @@ use App\Http\Controllers\ChuyenMucController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/test', [TestController::class, 'index']);
+Route::get('/', [TestController::class, 'index']);
 
 Route::group(['prefix' => '/admin'], function() {
     // Route của Chuyên Mục
