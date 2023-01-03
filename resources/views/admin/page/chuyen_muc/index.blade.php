@@ -17,8 +17,8 @@
                     <option value="0">Tạm Tắt</option>
                 </select>
                 <label class="mt-3">Chuyên Mục Cha</label>
-                <select class="form-control mt-1" id="id_chuyen_muc_cha">
-                    <option value="0">Chuyên Mục Root</option>
+                <select class="selectt form-control mt-1" id="id_chuyen_muc_cha">
+
                 </select>
             </div>
             <div class="card-footer text-end">
@@ -82,7 +82,7 @@
                                     <option value="0">Tạm Tắt</option>
                                 </select>
                                 <label class="mt-3">Chuyên Mục Cha</label>
-                                <select class="form-control mt-1" id="update_id_chuyen_muc_cha">
+                                <select class="selectt form-control mt-1" id="update_id_chuyen_muc_cha">
                                     <option value="0">Chuyên Mục Root</option>
                                 </select>
                             </div>
@@ -103,6 +103,41 @@
 @section('js')
 <script>
     $(document).ready(function() {
+        // $("#ten_chuyen_muc").keyup(function() {
+        $("body").on('keyup', '#ten_chuyen_muc', function() {
+            // var noi_dung = $(this).val();
+            var noi_dung = $("#ten_chuyen_muc").val();
+            var slug = toSlug(noi_dung);
+            $("#slug_chuyen_muc").val(slug);
+        });
+
+        $("body").on('keyup', '#update_ten_chuyen_muc', function() {
+            // var noi_dung = $(this).val();
+            var noi_dung = $("#update_ten_chuyen_muc").val();
+            var slug = toSlug(noi_dung);
+            $("#update_slug_chuyen_muc").val(slug);
+        });
+
+        function toSlug(str) {
+            // Chuyển chuỗi sang chữ thường
+            str = str.toLowerCase();
+
+            // Xóa dấu
+            str = str.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+            str = str.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+            str = str.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+            str = str.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+            str = str.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+            str = str.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+            str = str.replace(/đ/gi, 'd');
+
+            // Xóa khoảng trắng và ký tự đặc biệt
+            str = str.replace(/\s+/g, '-'); // Thay khoảng trắng bằng dấu gạch ngang
+            str = str.replace(/[^a-z0-9-]/gi, ''); // Xóa ký tự đặc biệt
+
+            return str;
+        }
+
         $("body").on('click', '#accpectUpdate', function() {
             var id                  = $("#update_id").val();
             var ten_chuyen_muc      = $("#update_ten_chuyen_muc").val();
@@ -186,7 +221,9 @@
                 'type'      :   'get',
                 'success'   :   function(abc) {
                     var noi_dung = '';
+                    var option   = '<option value="0">Chuyên Mục Root</option>';
                     $.each(abc.list, function(k, v) {
+                        option   += '<option value="'+ v.id +'">'+ v.ten_chuyen_muc +'</option>';
                         noi_dung += '<tr>';
                         noi_dung += '<th class="align-middle text-center">'+ (k + 1) +'</th>';
                         noi_dung += '<td class="align-middle">'+ v.ten_chuyen_muc +'</td>';
@@ -210,6 +247,8 @@
                     });
                     // Đưa nội dung lên HTML
                     $("#table_chuyen_muc tbody").html(noi_dung);
+                    $("#id_chuyen_muc_cha").html(option);
+                    $("#update_id_chuyen_muc_cha").html(option);
                 },
             });
         }
