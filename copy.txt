@@ -7,6 +7,9 @@
     </div>
 </div>
 
+<label></label>
+<input class="form-control mt-1" type="text" id="">
+
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -30,3 +33,15 @@
         </tr>
     </tbody>
 </table>
+
+@extends('admin.share.master_page')
+@section('noi_dung')
+
+@endsection
+@section('js')
+<script>
+    $(document).ready(function() {
+
+    });
+</script>
+@endsection
