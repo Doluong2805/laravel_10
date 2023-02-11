@@ -18,5 +18,7 @@ class SanPham extends Model
         'mo_ta',
         'id_chuyen_muc',
         'trang_thai',
+        'gia_ban',
+        'gia_khuyen_mai',
     ];
 }

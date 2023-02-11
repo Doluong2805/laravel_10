@@ -2,7 +2,7 @@
 @section('noi_dung')
 <div class="row" id="app">
     <div class="col-md-4">
-        <form id="formdata">
+        <form id="formdata" v-on:submit.prevent="add()">
         <div class="card">
             <div class="card-header">
                 Thêm Mới Sản Phẩm
@@ -69,3 +69,41 @@
     </div>
 </div>
 @endsection
+@section('js')
+<script>
+new Vue({
+    el      :   '#app',
+    data    :   {
+
+    },
+    created()   {
+
+    },
+    methods :   {
+        add() {
+            var paramObj = {};
+            $.each($('#formdata').serializeArray(), function(_, kv) {
+                if (paramObj.hasOwnProperty(kv.name)) {
+                    paramObj[kv.name] = $.makeArray(paramObj[kv.name]);
+                    paramObj[kv.name].push(kv.value);
+                } else {
+                    paramObj[kv.name] = kv.value;
+                }
+            });
+
+            axios
+                .post('/admin/san-pham/create', paramObj)
+                .then((res) => {
+
+                })
+                .catch((res) => {
+                    $.each(res.response.data.errors, function(k, v) {
+                        toastr.error(v[0]);
+                    });
+                });
+        },
+    },
+});
+</script>
+@endsection
+
