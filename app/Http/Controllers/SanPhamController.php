@@ -20,7 +20,14 @@ class SanPhamController extends Controller
 
     public function store(TaoSanPhamRequest $request)
     {
-        dd($request->all());
+        $data = $request->all();
+
+        SanPham::create($data);
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Đã thêm mới sản phẩm thành công!',
+        ]);
     }
 
     public function data()

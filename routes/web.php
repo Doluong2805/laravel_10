@@ -48,3 +48,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::post('/create-ajax', [AdminController::class, 'create_ajax']);
     });
 });
+
+Route::group(['prefix' => 'laravel-filemanager'], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
