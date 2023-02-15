@@ -4,6 +4,7 @@
 <!--favicon-->
 <link rel="icon" href="/assets_admin/images/favicon-32x32.png" type="image/png" />
 <!--plugins-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
 <link href="/assets_admin/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
 <link href="/assets_admin/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 <link href="/assets_admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
