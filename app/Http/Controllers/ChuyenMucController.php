@@ -20,15 +20,6 @@ class ChuyenMucController extends Controller
         return view('admin.page.chuyen_muc.index_vue');
     }
 
-    public function dataCha()
-    {
-        $data = ChuyenMuc::where('id_chuyen_muc_cha', 0)->get();
-
-        return response()->json([
-            'data' => $data
-        ]);
-    }
-
     public function data()
     {
         $sql  = "SELECT A.*, B.ten_chuyen_muc as ten_chuyen_muc_cha

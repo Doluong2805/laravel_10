@@ -20,8 +20,8 @@
                     <label class="mt-3">Chuyên Mục Cha</label>
                     <select class="selectt form-control mt-1" name="id_chuyen_muc_cha">
                         <option value="0">Root</option>
-                        <template v-for="(value, key) in listChuyenMucCha">
-                            <option v-bind:value="value.id">@{{ value.ten_chuyen_muc }}</option>
+                        <template v-for="(value, key) in listChuyenMuc">
+                            <option v-bind:value="value.id" v-if="value.id_chuyen_muc_cha == 0">@{{ value.ten_chuyen_muc }}</option>
                         </template>
                     </select>
                 </div>
@@ -101,8 +101,8 @@
                                 <label class="mt-3">Chuyên Mục Cha</label>
                                 <select v-model="edit.id_chuyen_muc_cha" class="form-control mt-1">
                                     <option value="0">Root</option>
-                                    <template v-for="(value, key) in listChuyenMucCha">
-                                        <option v-bind:value="value.id">@{{ value.ten_chuyen_muc }}</option>
+                                    <template v-for="(value, key) in listChuyenMuc">
+                                        <option v-bind:value="value.id" v-if="value.id_chuyen_muc_cha == 0">@{{ value.ten_chuyen_muc }}</option>
                                     </template>
                                 </select>
                             </div>
@@ -125,7 +125,6 @@
     el      :   '#app',
     data    :   {
         listChuyenMuc       : [],
-        listChuyenMucCha    : [],
         edit                : {},
         slug                : '',
         ten_chuyen_muc      : '',
@@ -219,20 +218,11 @@
                 })
         },
 
-        loadChuyenMucCha(){
-            axios
-                .get('/admin/chuyen-muc/data-cha')
-                .then((res) => {
-                    this.listChuyenMucCha = res.data.data;
-                })
-        },
-
         loadData(){
             axios
                 .get('/admin/chuyen-muc/data')
                 .then((res) => {
                     this.listChuyenMuc = res.data.list;
-                    this.loadChuyenMucCha();
                 })
         },
 

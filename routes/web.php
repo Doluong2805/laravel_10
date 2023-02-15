@@ -19,7 +19,6 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/index', [ChuyenMucController::class, 'index']);
         Route::get('/index-vue', [ChuyenMucController::class, 'indexVue']);
         Route::post('/create', [ChuyenMucController::class, 'store']);
-        Route::get('/data-cha', [ChuyenMucController::class, 'dataCha']);
         Route::get('/change-status/{id}', [ChuyenMucController::class, 'changeStatus']);
         Route::get('/data', [ChuyenMucController::class, 'data']);
 
