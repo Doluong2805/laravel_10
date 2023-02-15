@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChuyenMuc\ChuyenMucRequest;
+use App\Http\Requests\ChuyenMuc\UpdateChuyenMucRequest;
 use App\Models\ChuyenMuc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +13,20 @@ class ChuyenMucController extends Controller
     public function index()
     {
         return view('admin.page.chuyen_muc.index');
+    }
+
+    public function indexVue()
+    {
+        return view('admin.page.chuyen_muc.index_vue');
+    }
+
+    public function dataCha()
+    {
+        $data = ChuyenMuc::where('id_chuyen_muc_cha', 0)->get();
+
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     public function data()
@@ -24,7 +40,25 @@ class ChuyenMucController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function changeStatus($id)
+    {
+        $chuyenMuc = ChuyenMuc::where('id', $id)->first();
+        if($chuyenMuc){
+            $chuyenMuc->tinh_trang = !$chuyenMuc->tinh_trang;
+            $chuyenMuc->save();
+            return response()->json([
+                'status'    => true,
+                'message'   => 'Đã đổi trạng thái thành công'
+            ]);
+        }else{
+            return response()->json([
+                'status'     => false,
+                'message'    => 'Đã có lỗi sản phẩm không tồn tại !'
+            ]);
+        }
+    }
+
+    public function store(ChuyenMucRequest $request)
     {
         ChuyenMuc::create([
             'ten_chuyen_muc'        => $request->ten_chuyen_muc,
@@ -34,7 +68,8 @@ class ChuyenMucController extends Controller
         ]);
 
         return response()->json([
-            'xxx' => true
+            'xxx' => true,
+            'message' => 'Đã thêm mới chuyên mục thành công'
         ]);
     }
 
@@ -61,11 +96,13 @@ class ChuyenMucController extends Controller
         if($chuyenMuc) {
             $chuyenMuc->delete();
             return response()->json([
-                'status' => true
+                'status' => true,
+                'message' => 'Đã xóa chuyên mục thành công',
             ]);
         } else {
             return response()->json([
-                'status' => false
+                'status' => false,
+                'message' => 'Đã có lỗi, chuyên mục không tồn tại !',
             ]);
         }
     }
@@ -85,7 +122,7 @@ class ChuyenMucController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(UpdateChuyenMucRequest $request)
     {
         $chuyenMuc = ChuyenMuc::find($request->id);
         if($chuyenMuc) {
@@ -97,11 +134,13 @@ class ChuyenMucController extends Controller
             $chuyenMuc->save();
 
             return response()->json([
-                'status' => true
+                'status'    => true,
+                'message'   => 'Đã cập nhật chuyên mục thành công'
             ]);
         } else {
             return response()->json([
-                'status' => false
+                'status'    => false,
+                'message'   => 'Đã có lỗi, chuyên mục không tồn tại !'
             ]);
         }
     }

@@ -17,8 +17,11 @@ Route::group(['prefix' => '/admin'], function() {
     // Route của Chuyên Mục
     Route::group(['prefix' => '/chuyen-muc'], function() {
         Route::get('/index', [ChuyenMucController::class, 'index']);
-        Route::get('/data', [ChuyenMucController::class, 'data']);
+        Route::get('/index-vue', [ChuyenMucController::class, 'indexVue']);
         Route::post('/create', [ChuyenMucController::class, 'store']);
+        Route::get('/data-cha', [ChuyenMucController::class, 'dataCha']);
+        Route::get('/change-status/{id}', [ChuyenMucController::class, 'changeStatus']);
+        Route::get('/data', [ChuyenMucController::class, 'data']);
 
         Route::get('/doi-trang-thai/{id}', [ChuyenMucController::class, 'doiTrangThai']);
         Route::get('/delete/{id}', [ChuyenMucController::class, 'destroy']);
