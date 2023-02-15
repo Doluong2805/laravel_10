@@ -90,7 +90,7 @@
                             </div>
                             <div class="modal-body">
                                 <label>Tên Chuyên Mục</label>
-                                <input class="form-control mt-1" v-model="edit.ten_chuyen_muc" type="text">
+                                <input class="form-control mt-1" v-on:keyup="chuyenThanhSlugEdit()" v-model="edit.ten_chuyen_muc" type="text">
                                 <label class="mt-3">Slug Chuyên Mục</label>
                                 <input class="form-control mt-1" v-model="edit.slug_chuyen_muc" type="text">
                                 <label class="mt-3">Tình Trạng</label>
@@ -242,6 +242,10 @@
 
         chuyenThanhSlug(){
             this.slug = this.toSlug(this.ten_chuyen_muc);
+        },
+
+        chuyenThanhSlugEdit(){
+            this.edit.slug_chuyen_muc = this.toSlug(this.edit.ten_chuyen_muc);
         }
     },
 });
