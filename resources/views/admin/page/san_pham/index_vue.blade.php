@@ -73,7 +73,7 @@
                                 <td class="align-middle">@{{ v.ten_san_pham }}</td>
                                 <td class="align-middle">@{{ v.hinh_anh }}</td>
                                 <td class="align-middle">@{{ v.gia_ban }}</td>
-                                <td class="align-middle">@{{ v.id_chuyen_muc }}</td>
+                                <td class="align-middle">@{{ v.ten_chuyen_muc }}</td>
                                 <td class="align-middle">@{{ v.trang_thai }}</td>
                                 <td class="text-center align-middle text-nowrap">
                                     <button class="btn btn-info">Cập Nhật</button>

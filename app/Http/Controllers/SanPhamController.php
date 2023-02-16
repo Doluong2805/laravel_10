@@ -32,7 +32,9 @@ class SanPhamController extends Controller
 
     public function data()
     {
-        $data = SanPham::get();
+        $data = SanPham::join('chuyen_mucs', 'san_phams.id_chuyen_muc', 'chuyen_mucs.id')
+                       ->select('san_phams.*', 'chuyen_mucs.ten_chuyen_muc')
+                       ->get();
 
         return response()->json([
             'data'  => $data,
