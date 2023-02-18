@@ -37,6 +37,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/index-old', [SanPhamController::class, 'index_old']);
         Route::get('/data', [SanPhamController::class, 'data']);
         Route::post('/create', [SanPhamController::class, 'store']);
+        Route::post('/delete', [SanPhamController::class, 'destroy']);
     });
 
     // Route của Tài khoản

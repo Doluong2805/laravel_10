@@ -71,17 +71,67 @@
                             <tr>
                                 <th class="text-center align-middle">@{{ k + 1 }}</th>
                                 <td class="align-middle">@{{ v.ten_san_pham }}</td>
-                                <td class="align-middle">@{{ v.hinh_anh }}</td>
+                                <td class="align-middle">
+                                    <div v-bind:id="'carouselExampleControls' + v.id" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <template v-for="(v1, k1) in stringToArray(v.hinh_anh)">
+                                                <template v-if="k1 == 0">
+                                                    <div class="carousel-item active">
+                                                        <img style="height: 200px" v-bind:src="v1" class="d-block w-100" alt="...">
+                                                    </div>
+                                                </template>
+                                                <template v-else>
+                                                    <div class="carousel-item">
+                                                        <img style="height: 200px" v-bind:src="v1" class="d-block w-100" alt="...">
+                                                    </div>
+                                                </template>
+                                            </template>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" v-bind:data-bs-target="'#carouselExampleControls' + v.id" data-bs-slide="prev">
+                                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                          <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" v-bind:data-bs-target="'#carouselExampleControls' + v.id" data-bs-slide="next">
+                                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                          <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </td>
                                 <td class="align-middle">@{{ v.gia_ban }}</td>
-                                <td class="align-middle">@{{ v.ten_chuyen_muc }}</td>
-                                <td class="align-middle">@{{ v.trang_thai }}</td>
+                                <td class="align-middle text-nowrap">@{{ v.ten_chuyen_muc }}</td>
+                                <td class="align-middle text-nowrap">
+                                    <template v-if="v.trang_thai">
+                                        <button class="btn btn-primary">Còn Kinh Doanh</button>
+                                    </template>
+                                    <template v-else>
+                                        <button class="btn btn-warning">Dừng Kinh Doanh</button>
+                                    </template>
+                                </td>
                                 <td class="text-center align-middle text-nowrap">
                                     <button class="btn btn-info">Cập Nhật</button>
-                                    <button class="btn btn-danger">Xóa Bỏ</button>
+                                    <button v-on:click="sp_delete = v" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger">Xóa Bỏ</button>
                                 </td>
                             </tr>
                         </template>
                     </tbody>
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Xóa Sản Phẩm</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            Bạn có chắc chắn muốn xóa sản phẩm: <b>"@{{ sp_delete.ten_san_pham }}"</b> này không?
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button v-on:click="deleteSanPham()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Xác Nhận</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </table>
             </div>
         </div>
@@ -95,6 +145,7 @@ new Vue({
     data    :   {
         listChuyenMuc : [],
         listSanPham   : [],
+        sp_delete     : {},
     },
     created()   {
         this.loadChuyenMuc();
@@ -118,6 +169,7 @@ new Vue({
                 .then((res) => {
                     if(res.data.status) {
                         toastr.success(res.data.message);
+                        this.loadSanPham();
                     }
                 })
                 .catch((res) => {
@@ -140,6 +192,22 @@ new Vue({
                     this.listSanPham = res.data.data;
                 });
         },
+        stringToArray(str) {
+            return str.split(",");
+        },
+        deleteSanPham() {
+            axios
+                .post('/admin/san-pham/delete', this.sp_delete)
+                .then((res) => {
+                    toastr.success(res.data.message);
+                    this.loadSanPham();
+                })
+                .catch((res) => {
+                    $.each(res.response.data.errors, function(k, v) {
+                        toastr.error(v[0]);
+                    });
+                });
+        }
     },
 });
 </script>

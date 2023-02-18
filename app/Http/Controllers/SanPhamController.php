@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeleteSanPhamRequest;
 use App\Http\Requests\TaoSanPhamRequest;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
@@ -39,5 +40,16 @@ class SanPhamController extends Controller
         return response()->json([
             'data'  => $data,
         ]);
+    }
+
+    public function destroy(DeleteSanPhamRequest $request)
+    {
+        SanPham::where('id', $request->id)->delete();
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Đã xóa sản phẩm thành công!',
+        ]);
+
     }
 }
