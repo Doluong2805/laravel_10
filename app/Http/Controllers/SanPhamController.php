@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DeleteSanPhamRequest;
 use App\Http\Requests\TaoSanPhamRequest;
+use App\Http\Requests\UpdateSanPhamRequest;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
 
@@ -51,5 +52,17 @@ class SanPhamController extends Controller
             'message'   => 'Đã xóa sản phẩm thành công!',
         ]);
 
+    }
+
+    public function update(UpdateSanPhamRequest $request)
+    {
+        $data    = $request->all();
+        $sanPham = SanPham::find($request->id); // where('id', $request->id)->first();
+        $sanPham->update($data);
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Đã cập nhật phẩm thành công!',
+        ]);
     }
 }

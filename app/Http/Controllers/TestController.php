@@ -8,7 +8,7 @@ class TestController extends Controller
 {
     public function index()
     {
-        return view('admin.share.master_page');
+        return view('admin.demo');
     }
 
     public function jquery()

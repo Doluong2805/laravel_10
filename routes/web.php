@@ -38,6 +38,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::get('/data', [SanPhamController::class, 'data']);
         Route::post('/create', [SanPhamController::class, 'store']);
         Route::post('/delete', [SanPhamController::class, 'destroy']);
+        Route::post('/update', [SanPhamController::class, 'update']);
     });
 
     // Route của Tài khoản
@@ -59,8 +60,6 @@ Route::group(['prefix' => '/admin'], function() {
         Route::post('/delete', [TinTucController::class, 'destroy']);
         Route::post('/update', [TinTucController::class, 'update']);
         Route::get('/change-status/{id}', [TinTucController::class, 'changeStatus']);
-
-
     });
 });
 
