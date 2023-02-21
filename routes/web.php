@@ -14,6 +14,9 @@ Route::get('/vue', [TestController::class, 'vue']);
 
 Route::get('/demo-data', [TestController::class, 'demoData']);
 
+Route::get('/admin/login', [AdminController::class, 'viewLogin']);
+Route::post('/admin/login', [AdminController::class, 'actionLogin']);
+
 Route::group(['prefix' => '/admin'], function() {
     // Route của Chuyên Mục
     Route::group(['prefix' => '/chuyen-muc'], function() {

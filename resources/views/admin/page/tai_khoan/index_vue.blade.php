@@ -13,9 +13,9 @@
                     <label>Email</label>
                     <input name="email" class="form-control mt-1" type="email" placeholder="Nhập vào email">
                     <label>Mật Khẩu</label>
-                    <input name="password" class="form-control mt-1" type="password">
+                    <input name="password" class="form-control mt-1" type="text">
                     <label>Nhập Lại Mật Khẩu</label>
-                    <input name="re_password" class="form-control mt-1" type="password">
+                    <input name="re_password" class="form-control mt-1" type="text">
                     <label>Số Điện Thoại</label>
                     <input name="so_dien_thoai" class="form-control mt-1" type="text" placeholder="Nhập vào số điện thoại">
                     <label>Ngày Sinh</label>
@@ -95,6 +95,11 @@
                             toastr.success("Đã thêm mới tài khoản!");
                             this.loadData();
                         }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function(k, v) {
+                            toastr.error(v[0]);
+                        });
                     });
             },
             loadData() {

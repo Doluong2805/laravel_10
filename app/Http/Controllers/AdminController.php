@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateTaiKhoanAdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -23,9 +25,10 @@ class AdminController extends Controller
         return redirect('/admin/tai-khoan/index-form');
     }
 
-    public function create_ajax(Request $request)
+    public function create_ajax(CreateTaiKhoanAdminRequest $request)
     {
         $data = $request->all();
+        $data['password'] = bcrypt($request->password);
 
         Admin::create($data);
 
@@ -50,6 +53,24 @@ class AdminController extends Controller
 
         return response()->json([
             'data'  => $data,
+        ]);
+    }
+
+    public function viewLogin()
+    {
+        return view('admin.login');
+    }
+
+    public function actionLogin(Request $request)
+    {
+        // Kiểm tra $request->email và $request->password có giống với tài khoản nào không?
+        $data['email']      = $request->email;
+        $data['password']   = $request->password;
+
+        $check = Auth::guard('admin')->attempt($data); // True/False
+
+        return response()->json([
+            'status'    => $check,
         ]);
     }
 }
