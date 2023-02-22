@@ -2,84 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Customer\CreateCustomerRequest;
+use App\Http\Requests\Customer\LoginCustomerRequest;
 use App\Models\KhachHang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KhachHangController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function viewRegister()
     {
-        //
+        return view('customer.registerCustomer');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function actionRegister(CreateCustomerRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $data['password'] = bcrypt($request->password);
+
+        KhachHang::create($data);
+
+        return response()->json([
+            'status'     =>  true,
+            'message'    => 'Đã tạo tài khoản thành công!',
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+
+
+    public function viewLogin()
     {
-        //
+        return view('customer.loginCustomer');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\KhachHang  $khachHang
-     * @return \Illuminate\Http\Response
-     */
-    public function show(KhachHang $khachHang)
+    public function actionLogin(LoginCustomerRequest $request)
     {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\KhachHang  $khachHang
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(KhachHang $khachHang)
-    {
-        //
-    }
+        $data['email']      = $request->email;
+        $data['password']   = $request->password;
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\KhachHang  $khachHang
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, KhachHang $khachHang)
-    {
-        //
-    }
+        $check = Auth::guard('customer')->attempt($data);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\KhachHang  $khachHang
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(KhachHang $khachHang)
-    {
-        //
+        return response()->json([
+            'status'    => $check,
+        ]);
     }
 }

@@ -136,7 +136,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button v-on:click="xoaTinTuc()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Xóa Phim</button>
+                          <button v-on:click="xoaTinTuc()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Xóa Tin</button>
                         </div>
                       </div>
                     </div>

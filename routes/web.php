@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChuyenMucController;
+use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TinTucController;
@@ -16,6 +17,11 @@ Route::get('/demo-data', [TestController::class, 'demoData']);
 
 Route::get('/admin/login', [AdminController::class, 'viewLogin']);
 Route::post('/admin/login', [AdminController::class, 'actionLogin']);
+
+Route::get('/customer/register', [KhachHangController::class, 'viewRegister']);
+Route::post('/customer/register', [KhachHangController::class, 'actionRegister']);
+Route::get('/customer/login', [KhachHangController::class, 'viewLogin']);
+Route::post('/customer/login', [KhachHangController::class, 'actionLogin']);
 
 Route::group(['prefix' => '/admin'], function() {
     // Route của Chuyên Mục
