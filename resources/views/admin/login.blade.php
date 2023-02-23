@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.2/axios.min.js" integrity="sha512-NCiXRSV460cHD9ClGDrTbTaw0muWUBf/zB/yLzJavRsPNUl9ODkUVmUHsZtKu17XknhsGlmyVoJxLg/ZQQEeGA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toast-css/1.1.0/grid.min.css" integrity="sha512-YOGZZn5CgXgAQSCsxTRmV67MmYIxppGYDz3hJWDZW4A/sSOweWFcynv324Y2lJvY5H5PL2xQJu4/e3YoRsnPeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
 </head>
 
 <body class="bg-login">
@@ -92,7 +93,8 @@
 	<script src="/assets_admin/plugins/metismenu/js/metisMenu.min.js"></script>
 	<script src="/assets_admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<!--Password show & hide js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--Password show & hide js -->
 	<script>
 		$(document).ready(function () {
 			$("#show_hide_password a").on('click', function (event) {
@@ -137,6 +139,7 @@
                         .then((res) => {
                             if(res.data.status) {
                                 toastr.success("Đăng nhập thành công!");
+                                window.location.href = '/admin/chuyen-muc/index';
                             } else {
                                 toastr.error("Tài khoản hoặc mật khẩu không đúng!");
                             }

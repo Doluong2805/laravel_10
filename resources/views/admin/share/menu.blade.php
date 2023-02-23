@@ -27,6 +27,46 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/chuyen-muc/index">
+                    <div class="parent-icon">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div class="menu-title">Chuyên Mục</div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/san-pham/index">
+                    <div class="parent-icon">
+                        <i class="fa-brands fa-product-hunt"></i>
+                    </div>
+                    <div class="menu-title">Sản Phẩm</div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/chuyen-muc/index">
+                    <div class="parent-icon">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <div class="menu-title">Nhập Kho</div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/tin-tuc/index">
+                    <div class="parent-icon">
+                        <i class="fa-solid fa-square-rss"></i>
+                    </div>
+                    <div class="menu-title">Tin Tức</div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/tai-khoan/index-vue">
+                    <div class="parent-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="menu-title">Tài Khoản</div>
+                </a>
+            </li>
         </ul>
     </nav>
 </div>
