@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChuyenMucController;
 use App\Http\Controllers\KhachHangController;
+use App\Http\Controllers\NhaCungCapController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TinTucController;
@@ -69,6 +70,14 @@ Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() {
         Route::post('/delete', [TinTucController::class, 'destroy']);
         Route::post('/update', [TinTucController::class, 'update']);
         Route::get('/change-status/{id}', [TinTucController::class, 'changeStatus']);
+    });
+    Route::group(['prefix' => '/nha-cung-cap'], function() {
+        Route::get('/index', [NhaCungCapController::class, 'index']);
+        Route::post('/create', [NhaCungCapController::class, 'store']);
+        Route::get('/data', [NhaCungCapController::class, 'data']);
+        Route::post('/delete', [NhaCungCapController::class, 'destroy']);
+        Route::post('/update', [NhaCungCapController::class, 'update']);
+
     });
 });
 
