@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChuyenMucController;
+use App\Http\Controllers\HoaDonNhapKhoController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\NhaCungCapController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TinTucController;
+use App\Models\HoaDonNhapKho;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [TestController::class, 'index']);
@@ -49,6 +51,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() {
         Route::post('/create', [SanPhamController::class, 'store']);
         Route::post('/delete', [SanPhamController::class, 'destroy']);
         Route::post('/update', [SanPhamController::class, 'update']);
+        Route::post('/search', [SanPhamController::class, 'search']);
     });
 
     // Route của Tài khoản
@@ -78,6 +81,10 @@ Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() {
         Route::post('/delete', [NhaCungCapController::class, 'destroy']);
         Route::post('/update', [NhaCungCapController::class, 'update']);
 
+    });
+
+    Route::group(['prefix' => '/nhap-kho'], function() {
+        Route::get('/{id_nha_cung_cap}', [HoaDonNhapKhoController::class, 'index']);
     });
 });
 

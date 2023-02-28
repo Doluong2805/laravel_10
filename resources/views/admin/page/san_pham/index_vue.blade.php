@@ -208,7 +208,7 @@ new Vue({
     },
     methods :   {
         add() {
-            this.sp_add.mo_ta = CKEDITOR.instances['mo_ta'].getData();
+            // this.sp_add.mo_ta = CKEDITOR.instances['mo_ta'].getData();
             // paramObj['mo_ta'] = CKEDITOR.instances['mo_ta'].getData();
 
             axios
@@ -218,7 +218,7 @@ new Vue({
                         toastr.success(res.data.message);
                         this.loadSanPham();
                         $("#formdata").trigger("reset");
-                        CKEDITOR.instances['mo_ta'].setData('');
+                        .instances['mo_ta'].setData('');
                         $("#holder").html('');
                     }
                 })
