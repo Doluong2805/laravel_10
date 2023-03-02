@@ -17,5 +17,6 @@ class ChiTietHoaDonNhapKho extends Model
         'don_gia_nhap',
         'thanh_tien',
         'id_hoa_don_nhap',
+        'id_san_pham',
     ];
 }

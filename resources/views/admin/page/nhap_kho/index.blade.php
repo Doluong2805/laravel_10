@@ -25,7 +25,7 @@
                             <th class="text-center align-middle">@{{ key + 1 }}</th>
                             <td class="align-middle">@{{ v.ten_san_pham }}</td>
                             <td class="align-middle text-center">
-                                <button class="btn btn-sm btn-primary">Thêm</button>
+                                <button class="btn btn-sm btn-primary" v-on:click="add(v.id, v.ten_san_pham)">Thêm</button>
                             </td>
                         </tr>
                     </tbody>
@@ -51,20 +51,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th class="text-center align-middle">#</th>
-                            <td class="align-middle">Iphone 14</td>
+                        <tr v-for="(v, k) in dsNhapKho">
+                            <th class="text-center align-middle">@{{ k + 1 }}</th>
+                            <td class="align-middle">@{{ v.ten_san_pham }}</td>
                             <td class="align-middle">
-                                <input type="number" class="form-control">
+                                <input type="number" class="form-control" v-model="v.so_luong_nhap" v-on:blur="update(v)">
                             </td>
                             <td class="align-middle">
-                                <input type="number" class="form-control">
+                                <input type="number" class="form-control" v-model="v.don_gia_nhap" v-on:blur="update(v)">
                             </td>
                             <td class="align-middle">
-                                14.00.000 đ
+                                @{{ format(v.so_luong_nhap * v.don_gia_nhap) }}
                             </td>
                             <td class="align-middle text-center">
-                                <button class="btn btn-danger">Xóa Dòng</button>
+                                <button class="btn btn-danger" v-on:click="destroy(v)">Xóa Dòng</button>
                             </td>
                         </tr>
                     </tbody>
@@ -79,18 +79,31 @@
 new Vue({
     el      :   '#app',
     data    :   {
-        dsSanPham   : [],
-        search_sp   : '',
+        dsSanPham               : [],
+        search_sp               : '',
+        dsNhapKho               : [],
+        id_hoa_don_nhap_kho     : {{ $id_hoa_don }},
     },
     created()   {
         this.loadSanPham();
+        this.loadNhapKho();
     },
     methods :   {
+        format(number) {
+            return new Intl.NumberFormat('vi-VI', { style: 'currency', currency: 'VND' }).format(number);
+        },
         loadSanPham() {
             axios
                 .get('/admin/san-pham/data')
                 .then((res) => {
                     this.dsSanPham = res.data.data;
+                });
+        },
+        loadNhapKho() {
+            axios
+                .get('/admin/nhap-kho/data/' + this.id_hoa_don_nhap_kho)
+                .then((res) => {
+                    this.dsNhapKho = res.data.data;
                 });
         },
         timSP() {
@@ -101,6 +114,58 @@ new Vue({
                 .post('/admin/san-pham/search', payload)
                 .then((res) => {
                     this.dsSanPham = res.data.data;
+                })
+                .catch((res) => {
+                    $.each(res.response.data.errors, function(k, v) {
+                        toastr.error(v[0]);
+                    });
+                });
+        },
+        add(id, name) {
+            var paramObj = {
+                'id_san_pham'       :   id,
+                'id_hoa_don_nhap'   :   this.id_hoa_don_nhap_kho,
+                'ten_san_pham'      :   name,
+            };
+            axios
+                .post('/admin/nhap-kho', paramObj)
+                .then((res) => {
+                    if(res.data.status) {
+                        toastr.success(res.data.message);
+                        this.loadNhapKho();
+                    }
+                })
+                .catch((res) => {
+                    $.each(res.response.data.errors, function(k, v) {
+                        toastr.error(v[0]);
+                    });
+                });
+        },
+        update(v) {
+            axios
+                .post('/admin/nhap-kho/update', v)
+                .then((res) => {
+                    if(res.data.status) {
+                        // toastr.success(res.data.message);
+                        this.loadNhapKho();
+                    }
+                })
+                .catch((res) => {
+                    $.each(res.response.data.errors, function(k, v) {
+                        toastr.error(v[0]);
+                    });
+                });
+        },
+        destroy(v) {
+            axios
+                .post('/admin/nhap-kho/delete', v)
+                .then((res) => {
+                    if(res.data.status) {
+                        toastr.success(res.data.message);
+                        this.loadNhapKho();
+                    } else {
+                        toastr.error(res.data.message);
+                    }
                 })
                 .catch((res) => {
                     $.each(res.response.data.errors, function(k, v) {

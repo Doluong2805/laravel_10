@@ -85,6 +85,10 @@ Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() {
 
     Route::group(['prefix' => '/nhap-kho'], function() {
         Route::get('/{id_nha_cung_cap}', [HoaDonNhapKhoController::class, 'index']);
+        Route::get('/data/{id_hoa_don_nhap_kho}', [HoaDonNhapKhoController::class, 'data']);
+        Route::post('/', [HoaDonNhapKhoController::class, 'store']);
+        Route::post('/update', [HoaDonNhapKhoController::class, 'update']);
+        Route::post('/delete', [HoaDonNhapKhoController::class, 'destroy']);
     });
 });
 

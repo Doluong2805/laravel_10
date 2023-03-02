@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeleteChiTietNhapKhoRequest;
+use App\Http\Requests\UpdateChiTietNhapKhoRequest;
+use App\Models\ChiTietHoaDonNhapKho;
 use App\Models\HoaDonNhapKho;
 use App\Models\NhaCungCap;
 use Illuminate\Http\Request;
@@ -21,76 +24,75 @@ class HoaDonNhapKhoController extends Controller
                     'id_nha_cung_cap'   => $id_nha_cung_cap
                 ]);
             }
-            return view('admin.page.nhap_kho.index', compact('hoaDonNhapKho'));
+            $id_hoa_don = $hoaDonNhapKho->id;
+
+            return view('admin.page.nhap_kho.index', compact('hoaDonNhapKho', 'id_hoa_don'));
         } else {
             toastr()->error('Nhà cung cấp không tồn tại.', "Error!");
             return redirect('/admin/nha-cung-cap/index');
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function data($id_hoa_don_nhap_kho)
     {
-        //
+        $data = ChiTietHoaDonNhapKho::where('id_hoa_don_nhap', $id_hoa_don_nhap_kho)->get();
+
+        return response()->json([
+            'status'    => true,
+            'data'      => $data,
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $chiTietHoaDon = ChiTietHoaDonNhapKho::where('id_hoa_don_nhap', $request->id_hoa_don_nhap)
+                                             ->where('id_san_pham', $request->id_san_pham)
+                                             ->first();
+        if($chiTietHoaDon) {
+            $chiTietHoaDon->so_luong_nhap = $chiTietHoaDon->so_luong_nhap +  1;
+            $chiTietHoaDon->save();
+        } else {
+            $chiTietHoaDon = ChiTietHoaDonNhapKho::create([
+                'id_hoa_don_nhap'   => $request->id_hoa_don_nhap,
+                'id_san_pham'       => $request->id_san_pham,
+                'ten_san_pham'      => $request->ten_san_pham,
+            ]);
+        }
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Đã nhập kho!',
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\HoaDonNhapKho  $hoaDonNhapKho
-     * @return \Illuminate\Http\Response
-     */
-    public function show(HoaDonNhapKho $hoaDonNhapKho)
+    public function update(UpdateChiTietNhapKhoRequest $request)
     {
-        //
+        $chiTiet = ChiTietHoaDonNhapKho::find($request->id);
+        $chiTiet->update($request->all());
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Đã cập nhật chi tiết nhập kho!',
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\HoaDonNhapKho  $hoaDonNhapKho
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(HoaDonNhapKho $hoaDonNhapKho)
+    public function destroy(DeleteChiTietNhapKhoRequest $request)
     {
-        //
-    }
+        $chiTiet = ChiTietHoaDonNhapKho::find($request->id);
+        $hoaDon  = HoaDonNhapKho::find($chiTiet->id_hoa_don_nhap);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\HoaDonNhapKho  $hoaDonNhapKho
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, HoaDonNhapKho $hoaDonNhapKho)
-    {
-        //
-    }
+        if($hoaDon && $hoaDon->tinh_trang == 0) {
+            $chiTiet->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\HoaDonNhapKho  $hoaDonNhapKho
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(HoaDonNhapKho $hoaDonNhapKho)
-    {
-        //
+            return response()->json([
+                'status'    => true,
+                'message'   => 'Đã xóa hóa đơn thành công!',
+            ]);
+        } else {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Bạn không thể xóa!',
+            ]);
+        }
     }
 }
