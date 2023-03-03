@@ -26,7 +26,7 @@ Route::post('/customer/register', [KhachHangController::class, 'actionRegister']
 Route::get('/customer/login', [KhachHangController::class, 'viewLogin']);
 Route::post('/customer/login', [KhachHangController::class, 'actionLogin']);
 
-Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() {
+Route::group(['prefix' => '/admin'], function() { //, 'middleware' => 'authadmin'
     // Route của Chuyên Mục
     Route::group(['prefix' => '/chuyen-muc'], function() {
         Route::get('/index', [ChuyenMucController::class, 'index']);

@@ -218,7 +218,7 @@ new Vue({
                         toastr.success(res.data.message);
                         this.loadSanPham();
                         $("#formdata").trigger("reset");
-                        .instances['mo_ta'].setData('');
+                        instances['mo_ta'].setData('');
                         $("#holder").html('');
                     }
                 })
