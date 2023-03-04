@@ -8,9 +8,36 @@ use App\Models\ChiTietHoaDonNhapKho;
 use App\Models\HoaDonNhapKho;
 use App\Models\NhaCungCap;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HoaDonNhapKhoController extends Controller
 {
+    public function nhapKhoChinhThuc(Request $request)
+    {
+        $hoaDon = HoaDonNhapKho::find($request->id);
+        if($hoaDon && $hoaDon->tinh_trang == 0) {
+            $tongTien = ChiTietHoaDonNhapKho::where('id_hoa_don_nhap', $request->id)->sum('thanh_tien');
+            $hoaDon->update([
+                'tinh_trang'                => 1,
+                'ma_hoa_don'                => 'HDNK-' . (456342 + $hoaDon->id),
+                'tong_tien_hoa_don'         => $tongTien,
+                'ghi_chu'                   => $request->ghi_chu,
+                'id_admin'                  => Auth::guard('admin')->user()->id,
+            ]);
+
+            return response()->json([
+                'status'    => true,
+                'message'   => 'Đã nhập kho thành công!',
+            ]);
+
+        } else {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Bạn không thể nhập kho!',
+            ]);
+        }
+    }
+
     public function index($id_nha_cung_cap)
     {
         // $nhaCungCap = NhaCungCap::where('id', $id_nha_cung_cap)->first();
@@ -68,7 +95,11 @@ class HoaDonNhapKhoController extends Controller
     public function update(UpdateChiTietNhapKhoRequest $request)
     {
         $chiTiet = ChiTietHoaDonNhapKho::find($request->id);
-        $chiTiet->update($request->all());
+        $chiTiet->update([
+            'so_luong_nhap'     =>  $request->so_luong_nhap,
+            'don_gia_nhap'      =>  $request->don_gia_nhap,
+            'thanh_tien'        =>  $request->don_gia_nhap * $request->so_luong_nhap,
+        ]);
 
         return response()->json([
             'status'    => true,

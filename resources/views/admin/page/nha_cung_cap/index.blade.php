@@ -75,6 +75,7 @@
                                     <td class="align-middle">@{{ value.dia_chi }}</td>
                                     <td class="align-middle">@{{ value.ten_goi_nho }}</td>
                                     <td class="align-middle text-nowrap text-center">
+                                        <a v-bind:href="'/admin/nhap-kho/' + value.id" class="btn btn-primary">Nhập kho</a>
                                         <button class="btn btn-info" data-bs-toggle="modal"
                                             data-bs-target="#updateModal" v-on:click="edit = value">Chỉnh sửa</button>
                                         <button class="btn btn-danger" data-bs-toggle="modal"
