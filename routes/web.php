@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [TestController::class, 'index']);
 
+Route::get('/chart', [TestController::class, 'chart']);
+
 Route::get('/jquery', [TestController::class, 'jquery']);
 Route::get('/vue', [TestController::class, 'vue']);
 
@@ -74,6 +76,7 @@ Route::group(['prefix' => '/admin'], function() { //, 'middleware' => 'authadmin
         Route::post('/update', [TinTucController::class, 'update']);
         Route::get('/change-status/{id}', [TinTucController::class, 'changeStatus']);
     });
+
     Route::group(['prefix' => '/nha-cung-cap'], function() {
         Route::get('/index', [NhaCungCapController::class, 'index']);
         Route::post('/create', [NhaCungCapController::class, 'store']);
@@ -89,6 +92,7 @@ Route::group(['prefix' => '/admin'], function() { //, 'middleware' => 'authadmin
         Route::post('/', [HoaDonNhapKhoController::class, 'store']);
         Route::post('/update', [HoaDonNhapKhoController::class, 'update']);
         Route::post('/delete', [HoaDonNhapKhoController::class, 'destroy']);
+        Route::post('/real', [HoaDonNhapKhoController::class, 'nhapKhoChinhThuc']);
     });
 });
 

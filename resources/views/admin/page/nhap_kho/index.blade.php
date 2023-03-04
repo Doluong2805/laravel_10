@@ -67,8 +67,16 @@
                                 <button class="btn btn-danger" v-on:click="destroy(v)">Xóa Dòng</button>
                             </td>
                         </tr>
+                        <tr>
+                            <td colspan="100%">
+                                <textarea class="form-control" v-model="ghi_chu" cols="30" rows="5" placeholder="Nhập vào ghi chú đơn hàng"></textarea>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="card-footer text-end">
+                <button v-on:click="nhapKho()" class="btn btn-primary">Nhập Kho</button>
             </div>
         </div>
     </div>
@@ -83,12 +91,32 @@ new Vue({
         search_sp               : '',
         dsNhapKho               : [],
         id_hoa_don_nhap_kho     : {{ $id_hoa_don }},
+        ghi_chu                 : '',
     },
     created()   {
         this.loadSanPham();
         this.loadNhapKho();
     },
     methods :   {
+        nhapKho() {
+            var paramObj = {
+                'id'        :   this.id_hoa_don_nhap_kho,
+                'ghi_chu'   :   this.ghi_chu,
+            };
+            axios
+                .post('/admin/nhap-kho/real', paramObj)
+                .then((res) => {
+                    if(res.data.status) {
+                        toastr.success(res.data.message);
+                        window.location.href = '/admin/nha-cung-cap/index';
+                    }
+                })
+                .catch((res) => {
+                    $.each(res.response.data.errors, function(k, v) {
+                        toastr.error(v[0]);
+                    });
+                });
+        },
         format(number) {
             return new Intl.NumberFormat('vi-VI', { style: 'currency', currency: 'VND' }).format(number);
         },
