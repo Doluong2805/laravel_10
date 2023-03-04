@@ -8,10 +8,11 @@ use App\Http\Controllers\NhaCungCapController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TinTucController;
+use App\Http\Controllers\TrangChuController;
 use App\Models\HoaDonNhapKho;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [TestController::class, 'index']);
+Route::get('/', [TrangChuController::class, 'index']);
 
 Route::get('/chart', [TestController::class, 'chart']);
 
