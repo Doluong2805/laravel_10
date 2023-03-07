@@ -10,43 +10,20 @@ use Illuminate\Support\Facades\Auth;
 
 class KhachHangController extends Controller
 {
-    public function viewRegister()
+    public function index()
     {
-        return view('customer.registerCustomer');
+        return view('client.auth');
     }
 
-    public function actionRegister(CreateCustomerRequest $request)
+    public function register(CreateCustomerRequest $request)
     {
-        $data = $request->all();
-
-        $data['password'] = bcrypt($request->password);
-
+        $data               = $request->all();
+        $data['ho_va_ten']  = $request->ho_lot . " " . $request->ten_khach;
         KhachHang::create($data);
 
         return response()->json([
-            'status'     =>  true,
-            'message'    => 'Đã tạo tài khoản thành công!',
-        ]);
-    }
-
-
-
-
-    public function viewLogin()
-    {
-        return view('customer.loginCustomer');
-    }
-
-    public function actionLogin(LoginCustomerRequest $request)
-    {
-
-        $data['email']      = $request->email;
-        $data['password']   = $request->password;
-
-        $check = Auth::guard('customer')->attempt($data);
-
-        return response()->json([
-            'status'    => $check,
+            'status'    => 1,
+            'message'   => 'Đã tạo tài khoản thành công, vui lòng kiểm tra email!',
         ]);
     }
 }

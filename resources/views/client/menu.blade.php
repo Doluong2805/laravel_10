@@ -3,14 +3,17 @@
     <div class="header-bottom">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-3 col-md-4 col-4">
+                <div class="col-2">
                     <div class="header-logo">
                         <a href="index-shoe.html" class="logo-main">
                             <img src="/assets_client/img/logo.png" loading="lazy" alt="bisum">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6 d-lg-block d-none">
+                @php
+                    $chuyenMuc = \App\Models\ChuyenMuc::get();
+                @endphp
+                <div class="col-8">
                     <nav class="site-navigation">
                         <ul class="main-menu list-unstyled justify-content-center">
                             <li class="menu-list-item nav-item has-dropdown active">
@@ -47,181 +50,12 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="menu-list-item nav-item has-megamenu">
-                                <div class="mega-menu-header">
-                                    <a class="nav-link" href="collection-left-sidebar.html">
-                                        Shop
-                                    </a>
-                                    <span class="open-submenu">
-                                        <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="submenu-transform submenu-transform-desktop">
-                                    <div class="container">
-                                        <ul class="submenu megamenu-container list-unstyled">
-                                            <li class="menu-list-item nav-item-sub">
-                                                <div class="mega-menu-header">
-                                                    <a class="nav-link-sub nav-text-sub megamenu-heading"
-                                                        href="collection-left-sidebar.html">
-                                                        CATEGORY PAGES
-                                                    </a>
-                                                </div>
-                                                <div class="submenu-transform megamenu-transform">
-                                                    <ul class="megamenu list-unstyled">
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="collection-left-sidebar.html">With Left
-                                                                Sidebar</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="collection-right-sidebar.html">With Right
-                                                                Sidebar</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="collection-left-sidebar.html">3 Column
-                                                                Layout</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="collection-without-sidebar.html">4 Column
-                                                                Layout</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="collection-without-sidebar.html">Without
-                                                                Sidebar</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <li class="menu-list-item nav-item-sub">
-                                                <div
-                                                    class="mega-menu-header d-flex align-items-center justify-content-between">
-                                                    <a class="nav-link-sub nav-text-sub megamenu-heading"
-                                                        href="collection-right-sidebar.html">
-                                                        PRODUCT PAGES
-                                                    </a>
-                                                </div>
-                                                <div class="submenu-transform megamenu-transform">
-                                                    <ul class="megamenu list-unstyled">
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="product.html">Simple Product</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="product.html">Variable Product</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="product.html">Sale Product</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="product.html">Featured & On Sale</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="product-2.html">Tab Inside</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <li class="menu-list-item nav-item-sub">
-                                                <div
-                                                    class="mega-menu-header d-flex align-items-center justify-content-between">
-                                                    <a class="nav-link-sub nav-text-sub megamenu-heading"
-                                                        href="index.html">
-                                                        PRODUCT LAYOUTS
-                                                    </a>
-                                                </div>
-                                                <div class="submenu-transform megamenu-transform">
-                                                    <ul class="megamenu list-unstyled">
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="product-2.html">Grid Images</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="product.html">Vertical Thumb</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="product.html">Gallery Type</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="product.html">Product Width Layout</a>
-                                                        </li>
-                                                        <li class="menu-list-item nav-item-sub">
-                                                            <a class="nav-link-sub nav-text-sub"
-                                                                href="product.html">Sticky Gallery</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <li class="menu-list-item nav-item-sub">
-                                                <div
-                                                    class="mega-menu-header d-flex align-items-center justify-content-between">
-                                                    <a class="mega-menu-img nav-link-sub nav-text-sub"
-                                                        href="collection-left-sidebar.html">
-                                                        <img class="menu-img" src="/assets_client/img/menu/1.jpg" alt="img">
-                                                        <h2 class="img-menu-heading text_16 mt-2">Featured
-                                                            Collection</h2>
-                                                        <div
-                                                            class="img-menu-action text_12 bg-transparent p-0">
-                                                            <span>DISCOVER NOW</span>
-                                                            <span>
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    width="30" height="18" fill="#000"
-                                                                    class="icon-right-long" viewBox="0 0 16 16">
-                                                                    <path fill-rule="evenodd"
-                                                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                                                </svg>
-                                                            </span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="menu-list-item nav-item has-dropdown">
-                                <div class="mega-menu-header">
-                                    <a class="nav-link" href="blog.html">Blog</a>
-                                    <span class="open-submenu">
-                                        <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="submenu-transform submenu-transform-desktop">
-                                    <ul class="submenu list-unstyled">
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub" href="blog.html">Blog</a>
-                                        </li>
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub" href="article.html">Blog
-                                                Details</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+                            @foreach ($chuyenMuc as $key => $value)
+                            @if($value->id_chuyen_muc_cha == 0 && $value->tinh_trang == 1)
                             <li class="menu-list-item nav-item has-dropdown">
                                 <div class="mega-menu-header">
                                     <a class="nav-link" href="about-us.html">
-                                        Pages
+                                        {{ $value->ten_chuyen_muc }}
                                     </a>
                                     <span class="open-submenu">
                                         <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg"
@@ -232,60 +66,35 @@
                                         </svg>
                                     </span>
                                 </div>
+
                                 <div class="submenu-transform submenu-transform-desktop">
                                     <ul class="submenu list-unstyled">
+                                        @foreach ($chuyenMuc as $key_1 => $value_1)
+                                        @if($value_1->id_chuyen_muc_cha > 0 && $value_1->tinh_trang == 1 && $value->id == $value_1->id_chuyen_muc_cha)
                                         <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub" href="about-us.html">About
-                                                Us</a>
+                                            <a class="nav-link-sub nav-text-sub" href="checkout.html">{{ $value_1->ten_chuyen_muc }}</a>
                                         </li>
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub" href="contact.html">Contact</a>
-                                        </li>
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub" href="faq.html">FAQ</a>
-                                        </li>
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub" href="404.html">404 page</a>
-                                        </li>
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub" href="login.html">Login</a>
-                                        </li>
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub"
-                                                href="register.html">Register</a>
-                                        </li>
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub"
-                                                href="wishlist.html">Wishlist</a>
-                                        </li>
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub" href="cart.html">Cart</a>
-                                        </li>
-                                        <li class="menu-list-item nav-item-sub">
-                                            <a class="nav-link-sub nav-text-sub"
-                                                href="checkout.html">Checkout</a>
-                                        </li>
+                                        @endif
+                                        @endforeach
                                     </ul>
                                 </div>
                             </li>
-                            <li class="menu-list-item nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
-                            </li>
+                            @endif
+                            @endforeach
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3 col-md-8 col-8">
+                <div class="col-2">
                     <div class="header-action d-flex align-items-center justify-content-end">
                         <a class="header-action-item header-search" href="javascript:void(0)">
-                            <svg class="icon icon-search" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="icon icon-search" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M7.75 0.250183C11.8838 0.250183 15.25 3.61639 15.25 7.75018C15.25 9.54608 14.6201 11.1926 13.5625 12.4846L19.5391 18.4611L18.4609 19.5392L12.4844 13.5627C11.1924 14.6203 9.5459 15.2502 7.75 15.2502C3.61621 15.2502 0.25 11.884 0.25 7.75018C0.25 3.61639 3.61621 0.250183 7.75 0.250183ZM7.75 1.75018C4.42773 1.75018 1.75 4.42792 1.75 7.75018C1.75 11.0724 4.42773 13.7502 7.75 13.7502C11.0723 13.7502 13.75 11.0724 13.75 7.75018C13.75 4.42792 11.0723 1.75018 7.75 1.75018Z"
                                     fill="black" />
                             </svg>
                         </a>
-                        <a class="header-action-item header-wishlist ms-4 d-none d-lg-block"
-                            href="wishlist.html">
+                        <a class="header-action-item header-wishlist ms-4 d-none d-lg-block" href="wishlist.html">
                             <svg class="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -295,8 +104,8 @@
                         </a>
                         <a class="header-action-item header-cart ms-4" href="#drawer-cart"
                             data-bs-toggle="offcanvas">
-                            <svg class="icon icon-cart" width="24" height="26" viewBox="0 0 24 26" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="icon icon-cart" width="24" height="26" viewBox="0 0 24 26"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M12 0.000183105C9.25391 0.000183105 7 2.25409 7 5.00018V6.00018H2.0625L2 6.93768L1 24.9377L0.9375 26.0002H23.0625L23 24.9377L22 6.93768L21.9375 6.00018H17V5.00018C17 2.25409 14.7461 0.000183105 12 0.000183105ZM12 2.00018C13.6562 2.00018 15 3.34393 15 5.00018V6.00018H9V5.00018C9 3.34393 10.3438 2.00018 12 2.00018ZM3.9375 8.00018H7V11.0002H9V8.00018H15V11.0002H17V8.00018H20.0625L20.9375 24.0002H3.0625L3.9375 8.00018Z"
                                     fill="black" />
@@ -320,8 +129,8 @@
             <div class="container">
                 <form action="#" class="search-form d-flex align-items-center">
                     <button type="submit" class="search-submit bg-transparent pl-0 text-start">
-                        <svg class="icon icon-search" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg class="icon icon-search" width="20" height="20" viewBox="0 0 20 20"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M7.75 0.250183C11.8838 0.250183 15.25 3.61639 15.25 7.75018C15.25 9.54608 14.6201 11.1926 13.5625 12.4846L19.5391 18.4611L18.4609 19.5392L12.4844 13.5627C11.1924 14.6203 9.5459 15.2502 7.75 15.2502C3.61621 15.2502 0.25 11.884 0.25 7.75018C0.25 3.61639 3.61621 0.250183 7.75 0.250183ZM7.75 1.75018C4.42773 1.75018 1.75 4.42792 1.75 7.75018C1.75 11.0724 4.42773 13.7502 7.75 13.7502C11.0723 13.7502 13.75 11.0724 13.75 7.75018C13.75 4.42792 11.0723 1.75018 7.75 1.75018Z"
                                 fill="black" />
