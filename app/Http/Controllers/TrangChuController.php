@@ -8,7 +8,6 @@ class TrangChuController extends Controller
 {
     public function index()
     {
-
         return view('client.master');
     }
 }

@@ -8,7 +8,6 @@
 <body>
     <div class="body-wrapper">
         @include('client.header')
-
         @include('client.menu')
 
         @yield('noi_dung')
