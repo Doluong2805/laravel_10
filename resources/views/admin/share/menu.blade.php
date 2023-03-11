@@ -44,7 +44,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/chuyen-muc/index">
+                <a class="nav-link" href="/admin/nha-cung-cap/index">
                     <div class="parent-icon">
                         <i class="fa-solid fa-store"></i>
                     </div>
@@ -65,6 +65,14 @@
                         <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="menu-title">Tài Khoản</div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/cau-hinh">
+                    <div class="parent-icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <div class="menu-title">Cấu Hình</div>
                 </a>
             </li>
         </ul>

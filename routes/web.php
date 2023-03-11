@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChuyenMucController;
+use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\HoaDonNhapKhoController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\NhaCungCapController;
@@ -97,6 +98,12 @@ Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() { /
         Route::post('/update', [HoaDonNhapKhoController::class, 'update']);
         Route::post('/delete', [HoaDonNhapKhoController::class, 'destroy']);
         Route::post('/real', [HoaDonNhapKhoController::class, 'nhapKhoChinhThuc']);
+    });
+
+    Route::group(['prefix' => '/cau-hinh'], function() {
+        Route::get('/', [ConfigController::class, 'index']);
+        Route::get('/data', [ConfigController::class, 'getData']);
+        Route::post('/create', [ConfigController::class, 'store']);
     });
 });
 

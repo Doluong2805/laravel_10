@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Customer\CreateCustomerRequest;
 use App\Http\Requests\Customer\LoginCustomerRequest;
+use App\Jobs\RegisterMailJob;
 use App\Mail\RegisterMail;
 use App\Models\KhachHang;
 use Illuminate\Http\Request;
@@ -45,7 +46,12 @@ class KhachHangController extends Controller
         $data['hash_active']= Str::uuid();
         KhachHang::create($data);
 
-        Mail::to($request->email)->send(new RegisterMail($data));
+        RegisterMailJob::dispatch($data);
+
+        // for($i = 0; $i < 10; $i++) {
+        //     // Mail::to($request->email)->send(new RegisterMail($data));
+        //     // RegisterMailJob::dispatch($data);
+        // }
 
         return response()->json([
             'status'    => 1,
