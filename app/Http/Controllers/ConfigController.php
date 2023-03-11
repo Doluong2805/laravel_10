@@ -25,7 +25,41 @@ class ConfigController extends Controller
     {
         $data = $request->all();
 
-        Config::create($data);
+        $so_hinh = count(explode(",", $request->hinh_anh));
+
+        $list_title = '';
+        for($i = 1; $i <= $so_hinh; $i++) {
+            $name_input  = 'title_' . $i;
+            $list_title .= $request->$name_input;
+            if($i != $so_hinh) {
+                $list_title .= "|";
+            }
+        }
+
+        $list_des = '';
+        for($i = 1; $i <= $so_hinh; $i++) {
+            $name_input  = 'des_' . $i;
+            $list_des .= $request->$name_input;
+            if($i != $so_hinh) {
+                $list_des .= "|";
+            }
+        }
+
+        $list_link = '';
+        for($i = 1; $i <= $so_hinh; $i++) {
+            $name_input  = 'link_' . $i;
+            $list_link .= $request->$name_input;
+            if($i != $so_hinh) {
+                $list_link .= "|";
+            }
+        }
+
+        Config::create([
+            'list_image'    =>  $request->hinh_anh,
+            'list_title'    =>  $list_title,
+            'list_des'      =>  $list_des,
+            'list_link'     =>  $list_link,
+        ]);
 
         return response()->json([
             'status'    => true,
