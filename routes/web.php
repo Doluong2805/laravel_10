@@ -33,7 +33,7 @@ Route::post('/customer/register', [KhachHangController::class, 'actionRegister']
 Route::get('/customer/login', [KhachHangController::class, 'viewLogin']);
 Route::post('/customer/login', [KhachHangController::class, 'actionLogin']);
 
-Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() { //, 'middleware' => 'authadmin'
+Route::group(['prefix' => '/admin'], function() { //, 'middleware' => 'authadmin'
     // Route của Chuyên Mục
     Route::group(['prefix' => '/chuyen-muc'], function() {
         Route::get('/index', [ChuyenMucController::class, 'index']);
@@ -104,6 +104,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() { /
         Route::get('/', [ConfigController::class, 'index']);
         Route::get('/data', [ConfigController::class, 'getData']);
         Route::post('/create', [ConfigController::class, 'store']);
+        Route::get('/getChuyenMuc', [ConfigController::class, 'getChuyenMuc']);
+        Route::get('/getSanPham', [ConfigController::class, 'getSanPham']);
     });
 });
 

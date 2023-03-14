@@ -16,5 +16,13 @@ class Config extends Model
         'list_title',
         'list_des',
         'list_link',
+        'list_bestsale',
+        'list_sale',
+        'image_slide_1',
+        'image_slide_2',
+        'title_slide_1',
+        'title_slide_2',
+        'des_slide_1',
+        'des_slide_2',
     ];
 }
