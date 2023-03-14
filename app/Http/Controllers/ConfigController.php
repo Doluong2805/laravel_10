@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChuyenMuc;
 use App\Models\Config;
+use App\Models\SanPham;
 use Illuminate\Http\Request;
 
 class ConfigController extends Controller
@@ -15,7 +17,8 @@ class ConfigController extends Controller
     public function getData()
     {
         $data = Config::orderByDESC('id')->first();
-
+        // $data->list_bestsale = explode(',', $data->list_bestsale);
+        // $data->list_sale = explode(',', $data->list_sale);
         return response()->json([
             'data'  => $data
         ]);
@@ -24,7 +27,8 @@ class ConfigController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
+        $listBS = implode(',', $request->listBS);
+        $listS = implode(',', $request->listS);
         $so_hinh = count(explode(",", $request->hinh_anh));
 
         $list_title = '';
@@ -53,17 +57,40 @@ class ConfigController extends Controller
                 $list_link .= "|";
             }
         }
-
         Config::create([
             'list_image'    =>  $request->hinh_anh,
             'list_title'    =>  $list_title,
             'list_des'      =>  $list_des,
             'list_link'     =>  $list_link,
+            'list_bestsale' =>  $listBS,
+            'list_sale'     =>  $listS,
+            'image_slide_1' =>  $request->image_slide_1,
+            'image_slide_2' =>  $request->image_slide_2,
+            'title_slide_1' =>  $request->title_slide_1,
+            'title_slide_2' =>  $request->title_slide_2,
+            'des_slide_1'   =>  $request->des_slide_1,
+            'des_slide_2'   =>  $request->des_slide_2,
+
         ]);
 
         return response()->json([
             'status'    => true,
             'mess'      => 'Đã cấu hình thành công!',
+        ]);
+    }
+    public function getChuyenMuc()
+    {
+        $chuyenMuc = ChuyenMuc::get();
+
+        return response()->json([
+            'data'  => $chuyenMuc
+        ]);
+    }
+    public function getSanPham()
+    {
+        $sanPham = SanPham::get();
+        return response()->json([
+            'data'  => $sanPham
         ]);
     }
 }
