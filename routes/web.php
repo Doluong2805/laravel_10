@@ -12,7 +12,9 @@ use App\Http\Controllers\TinTucController;
 use App\Http\Controllers\TrangChuController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', [TrangChuController::class, 'index']);
+Route::get('/product/{id}', [SanPhamController::class, 'chiTiet']);
 Route::get('/auth', [KhachHangController::class, 'index']);
 Route::post('/register', [KhachHangController::class, 'register']);
 Route::post('/login', [KhachHangController::class, 'login']);

@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\ChuyenMuc;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TestController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-
+        Log::info("Đã nhận data");
+        Log::info($request->all());
         return view('admin.demo');
     }
 
