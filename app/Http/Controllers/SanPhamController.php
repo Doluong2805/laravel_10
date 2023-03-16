@@ -10,19 +10,25 @@ use Illuminate\Http\Request;
 
 class SanPhamController extends Controller
 {
-    public function chiTiet($id)
+    public function chiTiet($string)
     {
-        $value = SanPham::where('san_phams.id', $id)
+        if (preg_match('/post(\d+)/', $string, $matches)) {
+            $id = $matches[1];
+            $value = SanPham::where('san_phams.id', $id)
                         ->join('chuyen_mucs', 'san_phams.id_chuyen_muc', 'chuyen_mucs.id')
                         ->select('san_phams.*', 'chuyen_mucs.ten_chuyen_muc')
                         ->first();
 
-        if($value) {
-            $cate = SanPham::where('id_chuyen_muc', '<>', $value->id_chuyen_muc)
-                           ->orwhere('gia_ban', '<=', $value->gia_ban)
-                           ->take(6)->get();
+            if($value) {
+                $cate = SanPham::where('id_chuyen_muc', '<>', $value->id_chuyen_muc)
+                            ->orwhere('gia_ban', '<=', $value->gia_ban)
+                            ->take(6)->get();
 
-            return view('client.chi_tiet_san_pham', compact('value', 'cate'));
+                return view('client.chi_tiet_san_pham', compact('value', 'cate'));
+            } else {
+                toastr()->error('Sản phẩm không tồn tại!');
+                return redirect('/');
+            }
         } else {
             toastr()->error('Sản phẩm không tồn tại!');
             return redirect('/');

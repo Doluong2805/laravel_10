@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChiTietBanHangController;
 use App\Http\Controllers\ChuyenMucController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\HoaDonNhapKhoController;
@@ -19,6 +20,8 @@ Route::get('/auth', [KhachHangController::class, 'index']);
 Route::post('/register', [KhachHangController::class, 'register']);
 Route::post('/login', [KhachHangController::class, 'login']);
 Route::get('/active/{hash_active}', [KhachHangController::class, 'active']);
+
+Route::post('/add-to-cart', [ChiTietBanHangController::class, 'addToCart']);
 
 Route::get('/chart', [TestController::class, 'chart']);
 
