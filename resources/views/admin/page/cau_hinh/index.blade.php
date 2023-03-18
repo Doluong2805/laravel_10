@@ -48,7 +48,7 @@
                         <div class="mb-3 mt-2">
                             <label class="form-label"><b>Ảnh Slide 1</b></label>
                             <div class="input-group">
-                                <input name="image_slide_1" v-model="data.image_slide_1" id="image_slide_1"  class="form-control" type="text" >
+                                <input name="image_slide_1" v-bind:value="data.image_slide_1" id="image_slide_1"  class="form-control" type="text" >
                                 <span class="input-group-prepend">
                                     <a id="lfm_slide1" data-input="image_slide_1" data-preview="holder_1" class="btn btn-primary">
                                         <i class="fa fa-picture-o"></i> Choose
@@ -61,17 +61,17 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label"><b>Tiêu Đề Slide 1</b></label>
-                            <input name="title_slide_1"  type="text" class="form-control" v-model="data.title_slide_1">
+                            <input name="title_slide_1"  type="text" class="form-control" v-bind:value="data.title_slide_1">
                         </div>
                         <div class="mb-3">
                             <label class="form-label"><b>Mô Tả Slide 1</b></label>
-                            <input name="des_slide_1"  type="text" class="form-control" v-model="data.des_slide_1">
+                            <input name="des_slide_1"  type="text" class="form-control" v-bind:value="data.des_slide_1">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label"><b>Ảnh Slide 2</b></label>
                             <div class="input-group">
-                                <input name="image_slide_2" v-model="data.image_slide_2" id="image_slide_2" class="form-control" type="text" >
+                                <input name="image_slide_2" v-bind:value="data.image_slide_2" id="image_slide_2" class="form-control" type="text" >
                                 <span class="input-group-prepend">
                                     <a id="lfm_slide2" data-input="image_slide_2" data-preview="holder_2" class="btn btn-primary">
                                         <i class="fa fa-picture-o"></i> Choose
@@ -85,12 +85,12 @@
 
                         <div class="mb-3">
                             <label class="form-label"><b>Tiêu Đề Slide 2</b></label>
-                            <input  name="title_slide_2"  type="text" class="form-control" v-model="data.title_slide_2">
+                            <input  name="title_slide_2"  type="text" class="form-control" v-bind:value="data.title_slide_2">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label"><b>Mô Tả Slide 2</b></label>
-                            <input name="des_slide_2"  type="text" class="form-control" v-model="data.des_slide_2">
+                            <input name="des_slide_2"  type="text" class="form-control" v-bind:value="data.des_slide_2">
                         </div>
                     </div>
                     <div class="card-footer text-end">
@@ -343,6 +343,7 @@
                     axios
                         .get('/admin/cau-hinh/data')
                         .then((res) => {
+                            this.data = res.data.data;
                             this.data = res.data.data;
                             this.list_best_sale = this.data.list_bestsale?.split(',').map(Number);
                             this.list_sale = this.data.list_sale?.split(',').map(Number);
