@@ -36,7 +36,7 @@
             <div class="new-item" data-aos="fade-up" data-aos-duration="700">
                 <div class="product-card">
                     <div class="product-card-img">
-                        <a class="hover-switch" href="collection-left-sidebar.html">
+                        <a class="hover-switch" href="/product/{{$value->slug_san_pham}}-post{{$value->id}}">
                             <img style="height: 360px; width: 100%;" class="secondary-img" src="{{ $value->hinh_anh }}"
                                 alt="product-img">
                             <img style="height: 360px; width: 100%;" class="primary-img" src="{{ $value->hinh_anh }}"
@@ -57,7 +57,7 @@
                     </div>
                     <div class="product-card-details">
                         <h3 class="product-card-title">
-                            <a href="collection-left-sidebar.html">{{ $value->ten_san_pham }}</a>
+                            <a href="/product/{{$value->slug_san_pham}}-post{{$value->id}}">{{ $value->ten_san_pham }}</a>
                         </h3>
                         <div class="product-card-price">
                             @if($value->gia_khuyen_mai > 0)
