@@ -135,7 +135,6 @@
         },
         methods :   {
             add() {
-                console.log(123123);
                 var paramObj = {};
                 $.each($('#formdata').serializeArray(), function(_, kv) {
                     if (paramObj.hasOwnProperty(kv.name)) {

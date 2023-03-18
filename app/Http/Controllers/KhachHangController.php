@@ -14,6 +14,14 @@ use Illuminate\Support\Str;
 
 class KhachHangController extends Controller
 {
+    public function logout()
+    {
+        Auth::guard('customer')->logout();
+        toastr()->success('Đã đăng xuất thành công!');
+
+        return redirect('/');
+    }
+
     public function index()
     {
         return view('client.auth');

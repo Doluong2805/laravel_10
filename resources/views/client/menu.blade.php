@@ -102,8 +102,7 @@
                                     fill="black" />
                             </svg>
                         </a>
-                        <a class="header-action-item header-cart ms-4" href="#drawer-cart"
-                            data-bs-toggle="offcanvas">
+                        <a class="header-action-item header-cart ms-4" href="/list-cart">
                             <svg class="icon icon-cart" width="24" height="26" viewBox="0 0 24 26"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -111,7 +110,7 @@
                                     fill="black" />
                             </svg>
                         </a>
-                        <a class="header-action-item header-hamburger ms-4 d-lg-none" href="#drawer-menu"
+                        <a class="header-action-item header-hamburger ms-4 d-lg-none" href="/list-cart"
                             data-bs-toggle="offcanvas">
                             <svg class="icon icon-hamburger" xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"
@@ -121,6 +120,11 @@
                                 <line x1="3" y1="18" x2="21" y2="18"></line>
                             </svg>
                         </a>
+                        @if(Auth::guard('customer')->check())
+                        <a href="/logout" class="header-action-item header-hamburger ms-4">
+                            <i class="fa-solid fa-arrow-right-from-bracket fa-2x text-danger"></i>
+                        </a>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -21,7 +21,16 @@ Route::post('/register', [KhachHangController::class, 'register']);
 Route::post('/login', [KhachHangController::class, 'login']);
 Route::get('/active/{hash_active}', [KhachHangController::class, 'active']);
 
-Route::post('/add-to-cart', [ChiTietBanHangController::class, 'addToCart']);
+Route::group(['middleware' => 'homnayvangqua'], function() {
+    Route::get('/logout', [KhachHangController::class, 'logout']);
+    Route::post('/add-to-cart', [ChiTietBanHangController::class, 'addToCart']);
+
+    Route::get('/list-cart', [ChiTietBanHangController::class, 'listCart']);
+    Route::get('/list-cart/data', [ChiTietBanHangController::class, 'listCartData']);
+
+    Route::post('/update-cart', [ChiTietBanHangController::class, 'updateCart']);
+    Route::post('/delete-cart', [ChiTietBanHangController::class, 'deleteCart']);
+});
 
 Route::get('/chart', [TestController::class, 'chart']);
 

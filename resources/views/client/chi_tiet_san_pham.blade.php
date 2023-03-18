@@ -396,9 +396,9 @@
                 <div class="product-card">
                     <div class="product-card-img">
                         <a class="hover-switch" href="/product/{{$value->slug_san_pham}}-post{{$value->id}}">
-                            <img style="height: 360px; width: 100%;" class="secondary-img" src="{{ $value->hinh_anh }}"
+                            <img style="height: 360px; width: 100%;" class="secondary-img" src="{{ explode(",",$value->hinh_anh)[0] }}"
                                 alt="product-img">
-                            <img style="height: 360px; width: 100%;" class="primary-img" src="{{ $value->hinh_anh }}"
+                            <img style="height: 360px; width: 100%;" class="primary-img" src="{{ explode(",",$value->hinh_anh)[0] }}"
                                 alt="product-img">
                         </a>
                         @php
