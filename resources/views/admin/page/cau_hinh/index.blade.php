@@ -275,15 +275,14 @@
         new Vue({
             el: '#app',
             data: {
-                data: {},
-                add: {},
-                so_hinh: 0,
-                is_show: 1,
-                dataChuyenMuc: [],
-                dataSanPham: [],
-                list_best_sale: [],
-                list_sale: [],
-
+                data            : {},
+                add             : {},
+                so_hinh         : 0,
+                is_show         : 1,
+                dataChuyenMuc   : [],
+                dataSanPham     : [],
+                list_best_sale  : [],
+                list_sale       : [],
             },
             created() {
                 this.loadData();
