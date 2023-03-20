@@ -42,4 +42,13 @@ class TrangChuController extends Controller
         return view('client.list_bai_viet', compact('data'));
     }
 
+    public function search(Request $request) {
+        $search = $request->search;
+
+        $data =  SanPham::where('ten_san_pham', 'LIKE' , '%' .  $search . '%')
+                        ->get();
+
+        return view('client.list_product', compact('data'));
+    }
+
 }

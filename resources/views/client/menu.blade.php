@@ -5,7 +5,7 @@
             <div class="row align-items-center">
                 <div class="col-2">
                     <div class="header-logo">
-                        <a href="index-shoe.html" class="logo-main">
+                        <a href="/" class="logo-main">
                             <img src="/assets_client/img/logo.png" loading="lazy" alt="bisum">
                         </a>
                     </div>
@@ -18,19 +18,19 @@
                         <ul class="main-menu list-unstyled justify-content-center">
                             <li class="menu-list-item nav-item has-dropdown active">
                                 <div class="mega-menu-header">
-                                    <a class="nav-link" href="index.html">
+                                    <a class="nav-link" href="/">
                                         Home
                                     </a>
-                                    <span class="open-submenu">
+                                    {{-- <span class="open-submenu">
                                         <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                             stroke-linejoin="round">
                                             <polyline points="6 9 12 15 18 9"></polyline>
                                         </svg>
-                                    </span>
+                                    </span> --}}
                                 </div>
-                                <div class="submenu-transform submenu-transform-desktop">
+                                {{-- <div class="submenu-transform submenu-transform-desktop">
                                     <ul class="submenu list-unstyled">
                                         <li class="menu-list-item nav-item-sub">
                                             <a class="nav-link-sub nav-text-sub" href="index.html">Home 1</a>
@@ -48,7 +48,7 @@
                                                 4</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> --}}
                             </li>
 
                             {{-- Chuyên Mục --}}
@@ -119,6 +119,14 @@
                                             <a class="nav-link-sub nav-text-sub" href="/list-bai-viet/3">Thông Báo</a>
                                         </li>
                                     </ul>
+                                </div>
+                            </li>
+
+                            <li class="menu-list-item nav-item has-dropdown">
+                                <div class="mega-menu-header">
+                                    <a class="nav-link" href="/contact">
+                                        Contact
+                                    </a>
                                 </div>
                             </li>
 
@@ -204,7 +212,8 @@
         </div>
         <div class="search-wrapper">
             <div class="container">
-                <form action="#" class="search-form d-flex align-items-center">
+                <form action="/search" class="search-form d-flex align-items-center" method="POST">
+                    @csrf
                     <button type="submit" class="search-submit bg-transparent pl-0 text-start">
                         <svg class="icon icon-search" width="20" height="20" viewBox="0 0 20 20"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -214,7 +223,7 @@
                         </svg>
                     </button>
                     <div class="search-input mr-4">
-                        <input type="text" placeholder="Search your products..." autocomplete="off">
+                        <input type="text" name="search" placeholder="Search your products..." autocomplete="off">
                     </div>
                     <div class="search-close">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

@@ -27,6 +27,8 @@ Route::get('/list-product/{id}', [TrangChuController::class, 'viewListProduct'])
 Route::get('/list-bai-viet/{loai_bai_viet}', [TrangChuController::class, 'viewListBaiViet']);
 Route::get('/bai-viet/{id}', [TinTucController::class, 'viewDetailBaiViet']);
 
+Route::post('/search', [TrangChuController::class, 'search']);
+
 Route::group(['middleware' => 'homnayvangqua'], function() {
     Route::get('/logout', [KhachHangController::class, 'logout']);
     Route::post('/add-to-cart', [ChiTietBanHangController::class, 'addToCart']);

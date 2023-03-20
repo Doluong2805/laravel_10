@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ChuyenMuc;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class TestController extends Controller
@@ -36,6 +37,7 @@ class TestController extends Controller
 
     public function chart()
     {
+
         $chuyenMuc = ChuyenMuc::get();
         $data_chuyen_muc = [];
         $data_id_chuyen_muc = [];

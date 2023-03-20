@@ -6,8 +6,10 @@
         <div class="col-lg-12 col-md-12 col-12">
             <div class="filter-sort-wrapper d-flex justify-content-between flex-wrap">
                 <div class="collection-title-wrap d-flex align-items-end" style="margin-top: 15px">
-                    <h2 class="collection-title heading_24 mb-0">{{ $chuyenMuc->ten_chuyen_muc }}</h2>
+                    @if (isset($chuyenMuc))
+                    <h2 class="collection-title heading_24 mb-0">{{ $chuyenMuc->ten_chuyen_muc}}</h2>
                     <p class="collection-counter text_16 mb-0 ms-2">({{ count($data) }} items)</p>
+                    @endif
                 </div>
 
             </div>

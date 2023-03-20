@@ -36,7 +36,7 @@
                     </span>
                 </p>
                 <h2 class="article-card-heading heading_18">
-                    <a class="heading_18" href="article.html">
+                    <a class="heading_18" href="/bai-viet/{{$value->slug_bai_viet}}-post{{$value->id}}">
                         {{$value->tieu_de}}
                     </a>
                 </h2>

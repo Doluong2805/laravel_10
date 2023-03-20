@@ -22,9 +22,14 @@
                             </span>
                         </div>
                         <div id="holder" style="margin-top:15px;max-height:100px;">
-                            <template v-for="(value, key) in cal()">
-                                <img v-bind:src="value" style="height: 5rem;">
-                            </template>
+                            <div class="row">
+                                <template v-for="(value, key) in cal()">
+                                    <div class="col-md-3">
+                                        <img v-bind:src="value" style="height: 5rem;">
+                                    </div>
+                                </template>
+                            </div>
+
                         </div>
                         <template v-if="is_show == 1 && so_hinh > 0">
                             <label class="form-label mt-2"><b>Danh Sách Tiêu Đề</b></label>
