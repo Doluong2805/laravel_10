@@ -61,4 +61,25 @@ class TinTucController extends Controller
             $tinTuc->save();
         }
     }
+
+    public function viewDetailBaiViet($string)
+    {
+        if (preg_match('/post(\d+)/', $string, $matches)) {
+            $id = $matches[1];
+            $value = TinTuc::where('id', $id)->first();
+
+            if($value) {
+                $list_bai_viet = TinTuc::where('loai_bai_viet', $value->loai_bai_viet)
+                            ->take(6)->get();
+
+                return view('client.detail_bai_viet', compact('value', 'list_bai_viet'));
+            } else {
+                toastr()->error('Sản phẩm không tồn tại!');
+                return redirect('/');
+            }
+        } else {
+            toastr()->error('Sản phẩm không tồn tại!');
+            return redirect('/');
+        }
+    }
 }

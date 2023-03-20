@@ -15,11 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [TrangChuController::class, 'index']);
+
 Route::get('/product/{id}', [SanPhamController::class, 'chiTiet']);
 Route::get('/auth', [KhachHangController::class, 'index']);
 Route::post('/register', [KhachHangController::class, 'register']);
 Route::post('/login', [KhachHangController::class, 'login']);
 Route::get('/active/{hash_active}', [KhachHangController::class, 'active']);
+
+Route::get('/contact', [TrangChuController::class, 'viewContact']);
+Route::get('/list-product/{id}', [TrangChuController::class, 'viewListProduct']);
+Route::get('/list-bai-viet/{loai_bai_viet}', [TrangChuController::class, 'viewListBaiViet']);
+Route::get('/bai-viet/{id}', [TinTucController::class, 'viewDetailBaiViet']);
 
 Route::group(['middleware' => 'homnayvangqua'], function() {
     Route::get('/logout', [KhachHangController::class, 'logout']);

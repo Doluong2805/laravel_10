@@ -50,7 +50,80 @@
                                     </ul>
                                 </div>
                             </li>
-                            @foreach ($chuyenMuc as $key => $value)
+
+                            {{-- Chuyên Mục --}}
+                            <li class="menu-list-item nav-item has-megamenu">
+                                <div class="mega-menu-header">
+                                    <a class="nav-link" href="collection-left-sidebar.html">
+                                        Chuyên Mục
+                                    </a>
+                                    <span class="open-submenu">
+                                        <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="submenu-transform submenu-transform-desktop">
+                                    <div class="container">
+                                        <ul class="submenu megamenu-container list-unstyled">
+                                            @foreach ($chuyenMuc as $key => $value)
+                                            @if($value->id_chuyen_muc_cha == 0 && $value->tinh_trang == 1)
+                                                <li class="menu-list-item nav-item-sub">
+                                                    <div class="mega-menu-header">
+                                                        <a class="nav-link-sub nav-text-sub megamenu-heading"
+                                                            href="/list-product/{{$value->id}}">
+                                                            {{ $value->ten_chuyen_muc }}
+                                                        </a>
+                                                    </div>
+                                                    <div class="submenu-transform megamenu-transform">
+                                                        <ul class="megamenu list-unstyled">
+                                                            @foreach ($chuyenMuc as $key_1 => $value_1)
+                                                                @if($value_1->id_chuyen_muc_cha > 0 && $value_1->tinh_trang == 1 && $value->id == $value_1->id_chuyen_muc_cha)
+                                                                <li class="menu-list-item nav-item-sub">
+                                                                    <a class="nav-link-sub nav-text-sub"
+                                                                        href="/list-product/{{$value_1->id}}">{{ $value_1->ten_chuyen_muc }}</a>
+                                                                </li>
+                                                                @endif
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                            {{-- Bài Viết --}}
+                            <li class="menu-list-item nav-item has-dropdown">
+                                <div class="mega-menu-header">
+                                    <a class="nav-link">Bài Viết</a>
+                                    <span class="open-submenu">
+                                        <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="submenu-transform submenu-transform-desktop">
+                                    <ul class="submenu list-unstyled">
+                                        <li class="menu-list-item nav-item-sub">
+                                            <a class="nav-link-sub nav-text-sub" href="/list-bai-viet/1">Tin Hot</a>
+                                            <a class="nav-link-sub nav-text-sub" href="/list-bai-viet/2">Tin Thời Trang</a>
+                                            <a class="nav-link-sub nav-text-sub" href="/list-bai-viet/3">Thông Báo</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+                            {{-- @foreach ($chuyenMuc as $key => $value)
                             @if($value->id_chuyen_muc_cha == 0 && $value->tinh_trang == 1)
                             <li class="menu-list-item nav-item has-dropdown">
                                 <div class="mega-menu-header">
@@ -80,7 +153,7 @@
                                 </div>
                             </li>
                             @endif
-                            @endforeach
+                            @endforeach --}}
                         </ul>
                     </nav>
                 </div>
