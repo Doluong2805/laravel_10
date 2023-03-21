@@ -71,7 +71,7 @@
                                         </div>
                                         <p class="shipping_text">Shipping & taxes calculated at checkout</p>
                                         <div class="d-flex justify-content-center mt-4">
-                                            <a href="checkout.html" class="position-relative btn-primary text-uppercase">
+                                            <a href="/checkout" class="position-relative btn-primary text-uppercase">
                                                 Procced to checkout
                                             </a>
                                         </div>
@@ -126,7 +126,9 @@
                         count_ship += value.so_luong;
                     })
                     this.sub = total;
-                    if(count_ship < 3) {
+                    if(count_ship == 0) {
+                        this.ship = 0;
+                    } else if(count_ship < 3) {
                         this.ship = 30000;
                     } else {
                         this.ship = count_ship * 10000;

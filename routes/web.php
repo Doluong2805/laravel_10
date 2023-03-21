@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChiTietBanHangController;
 use App\Http\Controllers\ChuyenMucController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\HoaDonNhapKhoController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\NhaCungCapController;
@@ -38,6 +39,9 @@ Route::group(['middleware' => 'homnayvangqua'], function() {
 
     Route::post('/update-cart', [ChiTietBanHangController::class, 'updateCart']);
     Route::post('/delete-cart', [ChiTietBanHangController::class, 'deleteCart']);
+
+    Route::get('/checkout', [DonHangController::class, 'checkout']);
+    Route::post('/process', [DonHangController::class, 'process']);
 });
 
 Route::get('/chart', [TestController::class, 'chart']);

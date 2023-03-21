@@ -17,6 +17,5 @@ class DatabaseSeeder extends Seeder
         $this->call(NhaCungCapSeeder::class);
         $this->call(AdminSeeder::class);
         $this->call(ConfigSeeder::class);
-
     }
 }
