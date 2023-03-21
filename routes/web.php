@@ -42,6 +42,10 @@ Route::group(['middleware' => 'homnayvangqua'], function() {
 
     Route::get('/checkout', [DonHangController::class, 'checkout']);
     Route::post('/process', [DonHangController::class, 'process']);
+
+    Route::get('/don-hang', [DonHangController::class, 'viewDonhang']);
+    Route::get('/don-hang/data', [DonHangController::class, 'getDataDonHang']);
+    Route::get('/don-hang/{id}', [DonHangController::class, 'chiTietDonHang']);
 });
 
 Route::get('/chart', [TestController::class, 'chart']);

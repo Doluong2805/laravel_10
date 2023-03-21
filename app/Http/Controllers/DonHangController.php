@@ -80,4 +80,33 @@ class DonHangController extends Controller
             'message'   => 'Đã đặt hàng thành công!',
         ]);
     }
+
+    public function viewDonhang()
+    {
+        return view('client.don_hang');
+    }
+
+    public function getDataDonHang()
+    {
+        $khachHang = Auth::guard('customer')->user();
+
+        $data = DonHang::where('id_khach_hang', $khachHang->id)->get();
+
+        return response()->json([
+            'data' => $data
+        ]);
+
+    }
+
+    public function chiTietDonHang($id)
+    {
+        $data = ChiTietBanHang::where('id_don_hang', $id)
+                                    ->join('san_phams', 'chi_tiet_ban_hangs.id_san_pham', 'san_phams.id')
+                                    ->select('chi_tiet_ban_hangs.*', 'san_phams.ten_san_pham', 'san_phams.slug_san_pham', 'san_phams.hinh_anh', 'san_phams.gia_ban', 'san_phams.gia_khuyen_mai')
+                                    ->get();
+
+        return response()->json([
+            'data' => $data
+        ]);
+    }
 }
