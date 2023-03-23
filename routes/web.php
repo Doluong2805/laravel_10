@@ -137,6 +137,12 @@ Route::group(['prefix' => '/admin'], function() { //, 'middleware' => 'authadmin
         Route::get('/getChuyenMuc', [ConfigController::class, 'getChuyenMuc']);
         Route::get('/getSanPham', [ConfigController::class, 'getSanPham']);
     });
+    Route::group(['prefix' => '/don-hang'], function() {
+        Route::get('/', [DonHangController::class, 'viewDH']);
+        Route::get('/data', [DonHangController::class, 'getDataDonHang']);
+        Route::get('/chi-tiet/{id}', [DonHangController::class, 'chiTietDonHangAdmin']);
+
+    });
 });
 
 Route::group(['prefix' => 'laravel-filemanager'], function () {
