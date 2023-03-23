@@ -30,13 +30,15 @@
                                 <td class="align-middle">@{{ value.ho_lot }} @{{ value.ten_khach}}</td>
                                 <td class="align-middle">@{{ value.dia_chi }}</td>
                                 <td class="text-center align-middle">
-                                    <button v-if="value.thanh_toan == - 1" class="btn btn-danger">Chưa Thanh Toán</button>
+                                    <button v-if="value.thanh_toan == -1" class="btn btn-danger">Chưa Thanh Toán</button>
                                     <button v-else-if="value.thanh_toan == 0" class="btn btn-success">Thanh Toán Online</button>
                                     <button v-else class="btn btn-info">Thanh Toán Tiền Mặt</button>
                                 </td>
                                 <td class="text-center align-middle">
-                                    <button v-if="value.giao_hang == 0" class="btn btn-danger">Chưa Giao</button>
-                                    <button v-else-if="value.giao_hang == 1" class="btn btn-success">Đang Vận Chuyển</button>
+                                    <button v-if="value.giao_hang == 0" v-on:click="giao_hang = value" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Chưa Giao</button>
+                                    <button v-else-if="value.giao_hang == 1" v-on:click="giao_hang = value" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Đang vận chuyển</button>
+                                    <button v-else v-on:click="giao_hang = value" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Đã giao</button>
+                                    <button v-else class="btn btn-success">Đang Vận Chuyển</button>
                                     <button v-else class="btn btn-info">Đã Nhận</button>
                                 </td>
                                 <td class="text-center align-middle">
@@ -47,6 +49,28 @@
                     </tbody>
                 </table>
             </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Giao Hàng</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <label for="">Chọn trạng thái giao hàng</label>
+                      <select class="form-control" v-model="giao_hang.giao_hang">
+                        <option value="0">Chưa giao</option>
+                        <option value="1">Đang vận chuyển</option>
+                        <option value="2">Đã giao hàng</option>
+                      </select>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                      <button type="button" class="btn btn-primary" v-on:click="giaoHang()">Lưu</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <div class="modal fade" id="chiTietDonhang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
@@ -116,6 +140,7 @@
         data: {
             list: [],
             list_san_pham: [],
+            giao_hang : {},
             sub: 0,
             ship: 0,
         },
@@ -150,6 +175,20 @@
                     return gia_khuyen_mai;
                 }
                 return gia_ban;
+            },
+
+            giaoHang(){
+                axios
+                .post('/admin/don-hang/giao-hang', this.giao_hang)
+                .then((res) => {
+                    if(res.data.status) {
+                        toastr.success(res.data.message);
+                        $("#exampleModal").modal('hide');
+                        this.loadData();
+                    }else{
+                        toastr.success(res.data.message);
+                    }
+                })
             },
         },
     });
