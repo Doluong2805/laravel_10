@@ -75,6 +75,14 @@
                     <div class="menu-title">Cấu Hình</div>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/don-hang">
+                    <div class="parent-icon">
+                        <i class="fa-solid fa-cart-arrow-down"></i>
+                    </div>
+                    <div class="menu-title">Chi Tiết Đơn Hàng</div>
+                </a>
+            </li>
         </ul>
     </nav>
 </div>
