@@ -9,14 +9,15 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr class="text-center">
-                            <th>#</th>
-                            <th>Mã Đơn Hàng</th>
-                            <th>Tiền hàng</th>
-                            <th>Phí Ship</th>
-                            <th>Địa Chỉ</th>
-                            <th>Thanh Toán</th>
-                            <th>Giao Hàng</th>
-                            <th>Action</th>
+                            <th class="align-middle text-center">#</th>
+                            <th class="align-middle text-center">Mã Đơn Hàng</th>
+                            <th class="align-middle text-center">Tiền hàng</th>
+                            <th class="align-middle text-center">Phí Ship</th>
+                            <th class="align-middle text-center">Tên Khách Hàng</th>
+                            <th class="align-middle text-center">Địa Chỉ</th>
+                            <th class="align-middle text-center">Thanh Toán</th>
+                            <th class="align-middle text-center">Giao Hàng</th>
+                            <th class="align-middle text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,9 +25,10 @@
                             <tr>
                                 <th class="text-center align-middle">@{{ index +  1}}</th>
                                 <td class="text-center align-middle">@{{ value.hash_don_hang }}</td>
-                                <td class="text-end align-middle">@{{ value.tien_hang }}</td>
-                                <td class="text-end align-middle">@{{ value.phi_ship }}</td>
-                                <td class="text-end align-middle">@{{ value.dia_chi }}</td>
+                                <td class="align-middle">@{{ numberformat(value.tien_hang) }}</td>
+                                <td class="align-middle">@{{ numberformat(value.phi_ship) }}</td>
+                                <td class="align-middle">@{{ value.ho_lot }} @{{ value.ten_khach}}</td>
+                                <td class="align-middle">@{{ value.dia_chi }}</td>
                                 <td class="text-center align-middle">
                                     <button v-if="value.thanh_toan == - 1" class="btn btn-danger">Chưa Thanh Toán</button>
                                     <button v-else-if="value.thanh_toan == 0" class="btn btn-success">Thanh Toán Online</button>
@@ -38,7 +40,7 @@
                                     <button v-else class="btn btn-info">Đã Nhận</button>
                                 </td>
                                 <td class="text-center align-middle">
-                                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#chiTietDonhang" v-on:click="chiTietDonHang(value.id)">Chi Tiết</button>
+                                    <button class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#chiTietDonhang" v-on:click="chiTietDonHang(value.id)">Chi Tiết</button>
                                 </td>
                             </tr>
                         </template>
@@ -48,18 +50,18 @@
             <div class="modal fade" id="chiTietDonhang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
-                        <div class="modal-header">
-                           <h3>Danh Sách Sản Phẩm</h3>
+                        <div class="modal-header bg-info">
+                           <h3 class="text-white">Danh Sách Sản Phẩm</h3>
                         </div>
                         <div class="modal-body">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Hình Ảnh</th>
-                                        <th>Tên Sản Phẩm</th>
-                                        <th>Đơn Giá</th>
-                                        <th>Thành Tiền</th>
+                                        <th class="align-middle text-center">#</th>
+                                        <th class="align-middle text-center">Hình Ảnh</th>
+                                        <th class="align-middle text-center">Tên Sản Phẩm</th>
+                                        <th class="align-middle text-center">Đơn Giá</th>
+                                        <th class="align-middle text-center">Thành Tiền</th>
                                     </tr>
                                 </thead>
                                 <tbody>
