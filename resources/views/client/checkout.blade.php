@@ -42,10 +42,19 @@
                                                         value="{{ $khachHang->so_dien_thoai }}" />
                                                 </fieldset>
                                             </div>
-                                            <div class="col-lg-12 col-md-12 col-12">
+                                            <div class="col-lg-6 col-md-12 col-12">
                                                 <fieldset>
                                                     <label class="label">Address 1</label>
                                                     <input name="dia_chi" type="text" value="" />
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <fieldset>
+                                                    <label class="label">Chọn Phương Thức Thanh Toán</label>
+                                                    <select class="form-control" v-model="check_thanh_toan" name="thanh_toan">
+                                                        <option value="0">Thanh toán tự động</option>
+                                                        <option value="-1">Thanh toán tiền mặt</option>
+                                                    </select>
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -54,7 +63,9 @@
                                                 class="minicart-btn-area d-flex align-items-center justify-content-between flex-wrap">
                                                 <a href="/list-cart" class="checkout-page-btn minicart-btn btn-secondary">BACK TO
                                                     CART</a>
-                                                <button type="submit" class="checkout-page-btn minicart-btn btn-primary">PROCEED TO
+                                                <button type="button" v-if="check_thanh_toan == 0" class="checkout-page-btn minicart-btn btn-primary" data-bs-toggle="modal" data-bs-target="#thanhtoanModal">PROCEED TO
+                                                    SHIPPING</button>
+                                                <button type="submit" v-else class="checkout-page-btn minicart-btn btn-primary">PROCEED TO
                                                     SHIPPING</button>
                                             </div>
                                         </div>
@@ -62,6 +73,24 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="thanhtoanModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header bg-danger">
+                                  <h5 class="modal-title text-white" id="exampleModalLabel">Thanh Toán Đơn Hàng</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn vui lòng chuyển khoản tới số tài khoản: xxxxxxxxxxxx <br>
+                                    Để thanh toán đơn hàng của bạn.
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         <div class="col-xl-3 col-lg-4 col-md-12 col-12">
                             <div class="cart-total-area checkout-summary-area">
                                 <h3 class="d-none d-lg-block mb-0 text-center heading_24 mb-4">Chi Tiết</h4>
@@ -80,8 +109,6 @@
                                             </div>
                                         </div>
                                     </template>
-
-
                                     <div class="cart-total-box mt-4 bg-transparent p-0">
                                         <div class="subtotal-item subtotal-box">
                                             <h4 class="subtotal-title">Subtotals:</h4>
@@ -113,6 +140,7 @@
                 list: [],
                 sub: 0,
                 ship: 0,
+                check_thanh_toan : 0,
             },
             created() {
                 this.loadData();
