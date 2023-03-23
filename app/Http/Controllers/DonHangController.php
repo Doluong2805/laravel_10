@@ -27,7 +27,6 @@ class DonHangController extends Controller
     public function process(Request $request)
     {
         $khachHang = Auth::guard('customer')->user();
-
         // Xử lý hàng còn đủ hay không ở đầu giờ bữa sau. Khi não thông minh hơn
         $donHang   = DonHang::create([
             'ho_lot'            => $request->ho_lot,
@@ -37,6 +36,7 @@ class DonHangController extends Controller
             'so_dien_thoai'     => $request->so_dien_thoai,
             'dia_chi'           => $request->dia_chi,
             'id_khach_hang'     => $khachHang->id,
+            'thanh_toan'        => $request->thanh_toan,
             'hash_don_hang'     => 'Chưa có, tí tính nhé',
         ]);
 
