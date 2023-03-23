@@ -10,15 +10,15 @@
                     <div class="card-body">
                         <div class="col-md-12 mb-2">
                             <label class="form-label">Mã số thuế</label>
-                            <input name="ma_so_thue" type="text" class="form-control">
+                            <input v-model="ma_so_thue" v-on:blur="timMST()" name="ma_so_thue" type="text" class="form-control">
                         </div>
                         <div class="col-md-12 mb-2">
                             <label class="form-label">Tên công ty</label>
-                            <input name="ten_cong_ty" type="text" class="form-control">
+                            <input v-model="ten_cong_ty" name="ten_cong_ty" type="text" class="form-control">
                         </div>
                         <div class="col-md-12 mb-2">
                             <label class="form-label">Tên người đại diện</label>
-                            <input name="ten_nguoi_dai_dien" type="text" class="form-control">
+                            <input  name="ten_nguoi_dai_dien" type="text" class="form-control">
                         </div>
                         <div class="col-md-12 mb-2">
                             <label class="form-label">Số điện thoại</label>
@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <label class="form-label">Địa chỉ</label>
-                            <input name="dia_chi" type="text" class="form-control">
+                            <input v-model="dia_chi" name="dia_chi" type="text" class="form-control">
                         </div>
                         <div class="col-md-12 mb-2">
                             <label class="form-label">Tên gợi nhớ</label>
@@ -166,9 +166,12 @@
     new Vue({
         el      :   '#app',
         data    :   {
-            list :  [],
-            destroy  : {},
-            edit : {},
+            list        :   [],
+            destroy     :   {},
+            edit        :   {},
+            ma_so_thue  :   '',
+            ten_cong_ty :   '',
+            dia_chi     :   '',
         },
         created()   {
             this.loadData();
@@ -236,6 +239,27 @@
                         toastr.success(res.data.message);
                         this.loadData();
                         $('#deleteModal').modal('hide');
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function(k, v) {
+                            toastr.error(v[0]);
+                        });
+                    });
+            },
+            timMST() {
+                var paramObj = {
+                    'mst'   :   this.ma_so_thue,
+                };
+                axios
+                    .post('/admin/nha-cung-cap/check-mst', paramObj)
+                    .then((res) => {
+                        if(res.data.status) {
+                            toastr.success(res.data.message);
+                            this.ten_cong_ty = res.data.ten_cong_ty;
+                            this.dia_chi = res.data.dia_chi;
+                        } else {
+                            toastr.error(res.data.message);
+                        }
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function(k, v) {

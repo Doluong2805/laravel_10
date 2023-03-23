@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ThanhToanRequest;
+use App\Jobs\XacNhanDonHangJob;
 use App\Models\ChiTietBanHang;
 use App\Models\DonHang;
 use Illuminate\Http\Request;
@@ -70,6 +71,12 @@ class DonHangController extends Controller
         $donHang->tong_thanh_toan   = $total + $ship;
         $donHang->save();
 
+        $info['nguoi_mua']          = $khachHang->ho_va_ten;
+        $info['nguoi_nhan']         = $request->ho_lot . ' ' . $request->ten_khach;
+        $info['dia_chi']            = $request->dia_chi;
+        $info['email']              = $khachHang->email;
+
+        XacNhanDonHangJob::dispatch($info, $gioHang);
 
         ChiTietBanHang::where('id_khach_hang', $khachHang->id)
                       ->where('id_don_hang', 0)

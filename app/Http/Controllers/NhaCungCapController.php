@@ -7,6 +7,7 @@ use App\Http\Requests\DeleteNhaCungCapRequest;
 use App\Http\Requests\DeleteRequest;
 use App\Http\Requests\UpdateNhaCungCapRequest;
 use App\Models\NhaCungCap;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class NhaCungCapController extends Controller
@@ -59,5 +60,30 @@ class NhaCungCapController extends Controller
             'status'    => true,
             'message'   => 'Đã cập nhật thành công nhà cung cấp!',
         ]);
+    }
+
+    public function checkMST(Request $request)
+    {
+        $client = new Client([
+            'headers' => [ 'Content-Type' => 'application/json' ]
+        ]);
+        $link = 'https://api.vietqr.io/v2/business/' . $request->mst;
+        $respone = $client->get($link);
+
+        $res  = json_decode($respone->getBody()->getContents(), true);
+
+        if($res['code'] == '00') {
+            return response()->json([
+                'status'        => true,
+                'message'       => 'Đã lấy được mã số thuế!',
+                'ten_cong_ty'   => $res['data']['name'],
+                'dia_chi'       => $res['data']['address'],
+            ]);
+        } else {
+            return response()->json([
+                'status'        => false,
+                'message'       => 'Mã số thuế không tồn tại!',
+            ]);
+        }
     }
 }

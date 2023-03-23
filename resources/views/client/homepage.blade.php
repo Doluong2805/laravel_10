@@ -7,5 +7,4 @@
     @include('client.best_sale')
 @endsection
 @section('js')
-
 @endsection

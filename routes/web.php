@@ -119,6 +119,7 @@ Route::group(['prefix' => '/admin'], function() { //, 'middleware' => 'authadmin
         Route::post('/delete', [NhaCungCapController::class, 'destroy']);
         Route::post('/update', [NhaCungCapController::class, 'update']);
 
+        Route::post('check-mst', [NhaCungCapController::class, 'checkMST']);
     });
 
     Route::group(['prefix' => '/nhap-kho'], function() {
