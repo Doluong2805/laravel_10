@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ThanhToanRequest;
 use App\Models\ChiTietBanHang;
 use App\Models\DonHang;
 use Illuminate\Http\Request;
@@ -24,8 +25,9 @@ class DonHangController extends Controller
         }
     }
 
-    public function process(Request $request)
+    public function process(ThanhToanRequest $request)
     {
+        // dd($request->all());
         $khachHang = Auth::guard('customer')->user();
         // Xử lý hàng còn đủ hay không ở đầu giờ bữa sau. Khi não thông minh hơn
         $donHang   = DonHang::create([
