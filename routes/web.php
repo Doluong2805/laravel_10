@@ -141,6 +141,7 @@ Route::group(['prefix' => '/admin'], function() { //, 'middleware' => 'authadmin
         Route::get('/', [DonHangController::class, 'viewDH']);
         Route::get('/data', [DonHangController::class, 'getDataDonHang']);
         Route::get('/chi-tiet/{id}', [DonHangController::class, 'chiTietDonHangAdmin']);
+        Route::post('/giao-hang', [DonHangController::class, 'changeGiaoHang']);
 
     });
 });

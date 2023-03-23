@@ -138,4 +138,19 @@ class DonHangController extends Controller
             'data' => $data
         ]);
     }
+
+    public function changeGiaoHang(Request $request)
+    {
+        $donHang = DonHang::find($request->id);
+        if($donHang){
+            $donHang->giao_hang = $request->giao_hang;
+            $donHang->save();
+
+            return response()->json([
+                'status' => 1,
+                'message' => 'Đổi trạng thái thành công',
+            ]);
+        }
+
+    }
 }
