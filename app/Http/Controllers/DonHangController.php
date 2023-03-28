@@ -99,7 +99,9 @@ class DonHangController extends Controller
     {
         $khachHang = Auth::guard('customer')->user();
 
-        $data = DonHang::where('id_khach_hang', $khachHang->id)->get();
+        $data = DonHang::where('id_khach_hang', $khachHang->id)
+                        ->orderByDESC('created_at')
+                        ->get();
 
         return response()->json([
             'data' => $data

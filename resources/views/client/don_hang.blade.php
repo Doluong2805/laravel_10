@@ -31,9 +31,9 @@
                             <tr>
                                 <th class="text-center align-middle">@{{ index +  1}}</th>
                                 <td class="text-center align-middle">@{{ value.hash_don_hang }}</td>
-                                <td class="text-end align-middle">@{{ value.tien_hang }}</td>
-                                <td class="text-end align-middle">@{{ value.phi_ship }}</td>
-                                <td class="text-end align-middle">@{{ value.dia_chi }}</td>
+                                <td class="text-end align-middle">@{{ numberformat(value.tien_hang) }}</td>
+                                <td class="text-end align-middle">@{{ numberformat(value.phi_ship) }}</td>
+                                <td class="text-start align-middle">@{{ value.dia_chi }}</td>
                                 <td class="text-center align-middle">
                                     <button v-if="value.thanh_toan == - 1" class="btn btn-danger">Chưa Thanh Toán</button>
                                     <button v-else-if="value.thanh_toan == 0" class="btn btn-success">Thanh Toán Online</button>

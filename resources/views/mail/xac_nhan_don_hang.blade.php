@@ -673,8 +673,8 @@
                                             </table>
                                         </td>
                                     </tr>
+                                    @foreach ($gioHang as $key => $value)
                                     <tr>
-                                        @foreach ($gioHang as $key => $value)
                                         <td align="left" style="padding:20px;Margin:0">
                                             <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:130px" valign="top"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" class="es-left" align="left"
@@ -731,8 +731,50 @@
                                             </table>
                                             <!--[if mso]></td></tr></table><![endif]-->
                                         </td>
-                                        @endforeach
                                     </tr>
+                                    @endforeach
+                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                        <tr>
+                                            <td align="left">
+                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">Tên Chủ Sở Hữu</h2>
+                                            </td>
+                                            <td align="center">
+                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">NGUYEN VAN PHONG</h2>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left">
+                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">Số Tài Khoản</h2>
+                                            </td>
+                                            <td align="center">
+                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">9345884657</h2>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left">
+                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">Ngân Hàng</h2>
+                                            </td>
+                                            <td align="center">
+                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">VietComBank</h2>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left">
+                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">Số Tiền</h2>
+                                            </td>
+                                            <td align="center">
+                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">xxxxxx</h2>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left">
+                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">Nội Dung</h2>
+                                            </td>
+                                            <td align="center">
+                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">xxxxxx</h2>
+                                            </td>
+                                        </tr>
+                                    </table
                                     <tr>
                                         <td align="left"
                                             style="padding:0;Margin:0;padding-left:20px;padding-right:20px">

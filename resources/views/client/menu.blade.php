@@ -16,7 +16,7 @@
                 <div class="col-8">
                     <nav class="site-navigation">
                         <ul class="main-menu list-unstyled justify-content-center">
-                            <li class="menu-list-item nav-item has-dropdown active">
+                            <li class="menu-list-item nav-item has-dropdown">
                                 <div class="mega-menu-header">
                                     <a class="nav-link" href="/">
                                         Home
@@ -54,7 +54,7 @@
                             {{-- Chuyên Mục --}}
                             <li class="menu-list-item nav-item has-megamenu">
                                 <div class="mega-menu-header">
-                                    <a class="nav-link" href="collection-left-sidebar.html">
+                                    <a class="nav-link">
                                         Chuyên Mục
                                     </a>
                                     <span class="open-submenu">

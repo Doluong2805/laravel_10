@@ -4,7 +4,7 @@
     <div v-if="trang_thai == 1" class="login-page mt-100">
         <div class="container">
             <b>@{{ thong_bao }}</b>
-            <form v-on:submit.prevent="add()" id="formdata" class="login-form common-form mx-auto">
+            <form v-on:submit.prevent="add_1()" id="formdata_1" class="login-form common-form mx-auto">
                 <div class="section-header mb-3 text-end">
                     <button type="button" class="btn btn-success" v-on:click="trang_thai = 0">Login</button>
                     <h2 class="section-heading text-center">Register</h2>
@@ -72,7 +72,7 @@
     <div v-else class="login-page mt-100">
         <div class="container">
             <b>@{{ thong_bao }}</b>
-            <form v-on:submit.prevent="login()" id="formdata" class="login-form common-form mx-auto">
+            <form v-on:submit.prevent="login_1()" id="formdata_1" class="login-form common-form mx-auto">
                 <div class="section-header mb-3 text-end">
                     <button type="button" class="btn btn-primary" v-on:click="trang_thai = 1">Register</button>
                     <h2 class="section-heading text-center">Login</h2>
@@ -111,9 +111,9 @@ new Vue({
 
     },
     methods :   {
-        add() {
+        add_1() {
             var paramObj = {};
-            $.each($('#formdata').serializeArray(), function(_, kv) {
+            $.each($('#formdata_1').serializeArray(), function(_, kv) {
                 if (paramObj.hasOwnProperty(kv.name)) {
                     paramObj[kv.name] = $.makeArray(paramObj[kv.name]);
                     paramObj[kv.name].push(kv.value);
@@ -136,9 +136,9 @@ new Vue({
                     });
                 });
         },
-        login() {
+        login_1() {
             var paramObj = {};
-            $.each($('#formdata').serializeArray(), function(_, kv) {
+            $.each($('#formdata_1').serializeArray(), function(_, kv) {
                 if (paramObj.hasOwnProperty(kv.name)) {
                     paramObj[kv.name] = $.makeArray(paramObj[kv.name]);
                     paramObj[kv.name].push(kv.value);
