@@ -4,13 +4,81 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ThanhToanRequest;
 use App\Jobs\XacNhanDonHangJob;
+use App\Jobs\XacNhanJob;
 use App\Models\ChiTietBanHang;
 use App\Models\DonHang;
+use App\Models\KhachHang;
+use App\Models\Transaction;
+use Carbon\Carbon;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DonHangController extends Controller
 {
+    public function auto()
+    {
+
+
+        $client = new Client([
+            'headers' => [ 'Content-Type' => 'application/json' ]
+        ]);
+        $now  = Carbon::today()->format('d/m/Y');
+        $link = 'http://api.danangseafood.vn/api';
+        $respone = $client->post($link,[
+                    'body' => json_encode(
+                        [
+                            'begin'           => $now,
+                            'end'             => $now,
+                            'username'        => '0889470271',
+                            'password'        => 'Vodinhquochuy@gmail1',
+                            'accountNumber'   => '0651000883491'
+                        ]
+                )]);
+
+        $res  = json_decode($respone->getBody()->getContents(), true);
+        if($res['success']) {
+            foreach($res['results'] as $key => $value) {
+                $so_tien = str_replace(".", "", $value['Amount']);
+                $so_tien = str_replace(",", "", $so_tien);
+                if($value['CD'] == '+') {
+                    $check = Transaction::where('Reference', $value['Reference'])->first();
+                    if(!$check) {
+                        $str            =  $value['Description'];
+                        $id_don_hang    =  0;
+                        $tim   = strpos($str, "DHDZ");
+                        if($tim) {
+                            $str = substr($str, $tim, 11);
+
+                            $donHang = DonHang::where('hash_don_hang', $str)->first();
+                            if($donHang && $donHang->tong_thanh_toan <= $so_tien) {
+                                $donHang->thanh_toan = 0;
+                                $donHang->save();
+                                $id_don_hang = $donHang->id;
+                                //Gửi mail thông báo khách hàng
+                                $khachHang              = KhachHang::find($donHang->id_khach_hang);
+                                $info['email']          = $khachHang->email;
+                                $info['ho_va_ten']      = $khachHang->ho_va_ten;
+                                $info['so_tien']        = $donHang->tong_thanh_toan;
+                                $info['don_hang']       = $str;
+
+                                XacNhanJob::dispatch($info);
+                            }
+                        }
+
+                        Transaction::create([
+                            'tranDate'      =>  $value['tranDate'],
+                            'Reference'     =>  $value['Reference'],
+                            'Amount'        =>  $so_tien,
+                            'Description'   =>  $value['Description'],
+                            'id_don_hang'   =>  $id_don_hang,
+                        ]);
+                    }
+                }
+            }
+        }
+    }
+
     public function checkout()
     {
         $khachHang = Auth::guard('customer')->user();
@@ -39,7 +107,6 @@ class DonHangController extends Controller
             'so_dien_thoai'     => $request->so_dien_thoai,
             'dia_chi'           => $request->dia_chi,
             'id_khach_hang'     => $khachHang->id,
-            'thanh_toan'        => $request->thanh_toan,
             'hash_don_hang'     => 'Chưa có, tí tính nhé',
         ]);
 
@@ -65,6 +132,8 @@ class DonHangController extends Controller
             $ship = $count_ship * 10000;
         }
 
+        $ship = $ship / 10000;
+
         $donHang->hash_don_hang     = 'DHDZ' . (2342459 + $donHang->id);
         $donHang->phi_ship          = $ship;
         $donHang->tien_hang         = $total;
@@ -75,6 +144,8 @@ class DonHangController extends Controller
         $info['nguoi_nhan']         = $request->ho_lot . ' ' . $request->ten_khach;
         $info['dia_chi']            = $request->dia_chi;
         $info['email']              = $khachHang->email;
+        $info['tong_tien']          = $donHang->tong_thanh_toan;
+        $info['ma_don']             = $donHang->hash_don_hang;
 
         XacNhanDonHangJob::dispatch($info, $gioHang);
 

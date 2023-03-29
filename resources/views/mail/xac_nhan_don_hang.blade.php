@@ -9,7 +9,7 @@
     <meta name="x-apple-disable-message-reformatting">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="telephone=no" name="format-detection">
-    <title>New message 2</title>
+    <title>Xác Nhận Đơn Đặt Hàng</title>
     <!--[if (mso 16)]>
     <style type="text/css">
     a {text-decoration: none;}
@@ -439,6 +439,10 @@
             .es-m-p40l {
                 padding-left: 40px !important
             }
+
+            .h-auto {
+                height: auto !important
+            }
         }
     </style>
 </head>
@@ -455,43 +459,6 @@
             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top;background-color:#CEEAF4">
             <tr>
                 <td valign="top" style="padding:0;Margin:0">
-                    <table cellpadding="0" cellspacing="0" class="es-header" align="center"
-                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top">
-                        <tr>
-                            <td align="center" style="padding:0;Margin:0">
-                                <table bgcolor="#ffffff" class="es-header-body" align="center" cellpadding="0"
-                                    cellspacing="0"
-                                    style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;width:600px">
-                                    <tr>
-                                        <td align="left" style="padding:20px;Margin:0">
-                                            <table cellpadding="0" cellspacing="0" width="100%"
-                                                style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                                <tr>
-                                                    <td class="es-m-p0r" valign="top" align="center"
-                                                        style="padding:0;Margin:0;width:560px">
-                                                        <table cellpadding="0" cellspacing="0" width="100%"
-                                                            role="presentation"
-                                                            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                                            <tr>
-                                                                <td align="center"
-                                                                    style="padding:0;Margin:0;font-size:0px"><a
-                                                                        target="_blank" href="https://viewstripo.email"
-                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#068FC1;font-size:14px"><img
-                                                                            src="https://rypuop.stripocdn.email/content/guids/CABINET_79c105c819d9bc5c078b61dd38cef0b6/images/group_116.png"
-                                                                            alt="Logo"
-                                                                            style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"
-                                                                            height="60" title="Logo"></a></td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
                     <table cellpadding="0" cellspacing="0" class="es-content" align="center"
                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
                         <tr>
@@ -559,14 +526,14 @@
                                                                 <td align="center"
                                                                     style="padding:0;Margin:0;padding-top:10px;padding-left:10px;padding-right:10px">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#455A64;font-size:14px">
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px">
                                                                         DZ KHÓA 10</p>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="center" style="padding:10px;Margin:0">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#455A64;font-size:14px">
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px">
                                                                         32 Xuan Dieu, Hai Chau<br>Da Nang, Viet Nam</p>
                                                                 </td>
                                                             </tr>
@@ -604,14 +571,14 @@
                                                                 <td align="center"
                                                                     style="padding:0;Margin:0;padding-top:10px;padding-left:10px;padding-right:10px">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#455A64;font-size:14px">
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px">
                                                                         {{ $info['nguoi_nhan'] }}</p>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="center" style="padding:10px;Margin:0">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#455A64;font-size:14px">
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px">
                                                                         {{ $info['dia_chi'] }}</p>
                                                                 </td>
                                                             </tr>
@@ -718,10 +685,10 @@
                                                                 <td align="left"
                                                                     style="padding:0;Margin:0;padding-top:40px">
                                                                     <p class="p_price"
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#455A64;font-size:14px">
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px">
                                                                         QTY:&nbsp; {{ $value->so_luong }}</p>
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#455A64;font-size:14px">
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px">
                                                                         <b>{{ number_format($value->thanh_tien, 0, '.', ',') }} đ</b></p>
                                                                 </td>
                                                             </tr>
@@ -733,48 +700,6 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                    <table cellpadding="0" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td align="left">
-                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">Tên Chủ Sở Hữu</h2>
-                                            </td>
-                                            <td align="center">
-                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">NGUYEN VAN PHONG</h2>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left">
-                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">Số Tài Khoản</h2>
-                                            </td>
-                                            <td align="center">
-                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">9345884657</h2>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left">
-                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">Ngân Hàng</h2>
-                                            </td>
-                                            <td align="center">
-                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">VietComBank</h2>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left">
-                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">Số Tiền</h2>
-                                            </td>
-                                            <td align="center">
-                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">xxxxxx</h2>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left">
-                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">Nội Dung</h2>
-                                            </td>
-                                            <td align="center">
-                                                <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:15px;font-style:normal;font-weight:bold;color:#455A64">xxxxxx</h2>
-                                            </td>
-                                        </tr>
-                                    </table
                                     <tr>
                                         <td align="left"
                                             style="padding:0;Margin:0;padding-left:20px;padding-right:20px">
@@ -833,24 +758,42 @@
                                                                     </table>
                                                                 </td>
                                                             </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="es-content" align="center"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
+                        <tr>
+                            <td align="center" style="padding:0;Margin:0">
+                                <table bgcolor="#ffffff" class="es-content-body" align="center" cellpadding="0"
+                                    cellspacing="0"
+                                    style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
+                                    <tr>
+                                        <td align="left" bgcolor="#C5B6AA"
+                                            style="padding:20px;Margin:0;background-color:#c5b6aa">
+                                            <table cellpadding="0" cellspacing="0" width="100%"
+                                                style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                <tr>
+                                                    <td align="center" valign="top"
+                                                        style="padding:0;Margin:0;width:560px">
+                                                        <table cellpadding="0" cellspacing="0" width="100%"
+                                                            role="presentation"
+                                                            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
-                                                                <td align="center"
-                                                                    style="padding:0;Margin:0;padding-top:20px">
-                                                                    <!--[if mso]><a href="https://viewstripo.email" target="_blank" hidden>
- <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="https://viewstripo.email"
-                style="height:41px; v-text-anchor:middle; width:147px" arcsize="24%" strokecolor="#bd242b" strokeweight="1px" fillcolor="#ffffff">
-  <w:anchorlock></w:anchorlock>
-  <center style='color:#bd242b; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:15px; font-weight:400; line-height:15px;  mso-text-raise:1px'>View Receipt</center>
- </v:roundrect></a>
-<![endif]-->
-                                                                    <!--[if !mso]><!-- --><span
-                                                                        class="es-button-border msohide"
-                                                                        style="border-style:solid;border-color:#bd242b;background:#ffffff;border-width:1px;display:inline-block;border-radius:10px;width:auto;mso-border-alt:10px;mso-hide:all"><a
-                                                                            href="https://viewstripo.email"
-                                                                            class="es-button" target="_blank"
-                                                                            style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#bd242b;font-size:18px;padding:10px 20px 10px 20px;display:inline-block;background:#ffffff;border-radius:10px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;border-color:#ffffff">View
-                                                                            Receipt</a></span>
-                                                                    <!--<![endif]-->
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:24px;font-style:normal;font-weight:bold;color:#455A64">
+                                                                        THÔNG TIN TÀI KHOẢN</h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -872,6 +815,137 @@
                                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
                                     <tr>
                                         <td align="left"
+                                            style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
+                                            <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:270px" valign="top"><![endif]-->
+                                            <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                                                style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                                                <tr>
+                                                    <td class="es-m-p20b" align="left"
+                                                        style="padding:0;Margin:0;width:270px">
+                                                        <table cellpadding="0" cellspacing="0" width="100%"
+                                                            role="presentation"
+                                                            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                            <tr>
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;font-size:24px;font-style:normal;font-weight:bold;color:#455A64">
+                                                                        TÊN TK</h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;font-size:24px;font-style:normal;font-weight:bold;color:#455A64">
+                                                                        NGÂN HÀNG</h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;font-size:24px;font-style:normal;font-weight:bold;color:#455A64">
+                                                                        SỐ TÀI KHOẢN</h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;font-size:24px;font-style:normal;font-weight:bold;color:#455A64">
+                                                                        SỐ TIỀN</h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;font-size:24px;font-style:normal;font-weight:bold;color:#455A64">
+                                                                        NỘI DUNG</h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!--[if mso]></td><td style="width:20px"></td><td style="width:270px" valign="top"><![endif]-->
+                                            <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                                                style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                                                <tr>
+                                                    <td align="left" style="padding:0;Margin:0;width:270px">
+                                                        <table cellpadding="0" cellspacing="0" width="100%"
+                                                            role="presentation"
+                                                            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                            <tr>
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;font-size:24px;font-style:normal;font-weight:bold;color:#455A64">
+                                                                        VÕ ĐÌNH QUỐC HUY</h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;font-size:24px;font-style:normal;font-weight:bold;color:#455A64">
+                                                                        VIETCOMBANK</h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;font-size:24px;font-style:normal;font-weight:bold;color:#455A64">
+                                                                        0651000883491</h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;font-size:24px;font-style:normal;font-weight:bold;color:#ff0000">
+                                                                        {{ number_format($info['tong_tien'], 0, '.', ',') }} đ</h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" style="padding:0;Margin:0">
+                                                                    <h2
+                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;font-size:24px;font-style:normal;font-weight:bold;color:#ff0000">
+                                                                        {{ $info['ma_don'] }} </h2>
+                                                                    <p
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px;display:none">
+                                                                        <br></p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!--[if mso]></td></tr></table><![endif]-->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left"
                                             style="Margin:0;padding-bottom:20px;padding-left:20px;padding-right:20px;padding-top:40px">
                                             <table cellpadding="0" cellspacing="0" width="100%"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
@@ -882,88 +956,13 @@
                                                             role="presentation"
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
-                                                                <td align="center" class="es-m-txt-c"
-                                                                    style="padding:0;Margin:0">
-                                                                    <h2
-                                                                        style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Orbitron, sans-serif;font-size:24px;font-style:normal;font-weight:bold;color:#455A64">
-                                                                        Any questions? <a
-                                                                            href="https://viewstripo.email"
-                                                                            target="_blank"
-                                                                            style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#068FC1;font-size:24px">We're
-                                                                            here to help!</a></h2>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="center"
-                                                                    style="padding:0;Margin:0;padding-top:20px;padding-bottom:30px;font-size:0">
-                                                                    <table cellpadding="0" cellspacing="0"
-                                                                        class="es-table-not-adapt es-social"
-                                                                        role="presentation"
-                                                                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                                                        <tr>
-                                                                            <td align="center" valign="top"
-                                                                                style="padding:0;Margin:0;padding-right:30px">
-                                                                                <a target="_blank"
-                                                                                    href="https://viewstripo.email"
-                                                                                    style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#068FC1;font-size:14px"><img
-                                                                                        title="Facebook"
-                                                                                        src="https://rypuop.stripocdn.email/content/assets/img/social-icons/circle-colored/facebook-circle-colored.png"
-                                                                                        alt="Fb" height="24"
-                                                                                        style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a>
-                                                                            </td>
-                                                                            <td align="center" valign="top"
-                                                                                style="padding:0;Margin:0;padding-right:30px">
-                                                                                <a target="_blank"
-                                                                                    href="https://viewstripo.email"
-                                                                                    style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#068FC1;font-size:14px"><img
-                                                                                        title="Twitter"
-                                                                                        src="https://rypuop.stripocdn.email/content/assets/img/social-icons/circle-colored/twitter-circle-colored.png"
-                                                                                        alt="Tw" height="24"
-                                                                                        style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a>
-                                                                            </td>
-                                                                            <td align="center" valign="top"
-                                                                                style="padding:0;Margin:0;padding-right:30px">
-                                                                                <a target="_blank"
-                                                                                    href="https://viewstripo.email"
-                                                                                    style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#068FC1;font-size:14px"><img
-                                                                                        title="Instagram"
-                                                                                        src="https://rypuop.stripocdn.email/content/assets/img/social-icons/circle-colored/instagram-circle-colored.png"
-                                                                                        alt="Inst" height="24"
-                                                                                        style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a>
-                                                                            </td>
-                                                                            <td align="center" valign="top"
-                                                                                style="padding:0;Margin:0"><a
-                                                                                    target="_blank"
-                                                                                    href="https://viewstripo.email"
-                                                                                    style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#068FC1;font-size:14px"><img
-                                                                                        title="Youtube"
-                                                                                        src="https://rypuop.stripocdn.email/content/assets/img/social-icons/circle-colored/youtube-circle-colored.png"
-                                                                                        alt="Yt" height="24"
-                                                                                        style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
                                                                 <td align="center" style="padding:0;Margin:0">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#455A64;font-size:14px">
-                                                                        We don't want you to miss out, but if you have
-                                                                        to, you can&nbsp;<a
-                                                                            href="https://viewstripo.email"
-                                                                            target="_blank"
-                                                                            style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#068FC1;font-size:14px">unsubscribe</a>.
-                                                                    </p>
-                                                                    <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#455A64;font-size:14px">
-                                                                        <br></p>
-                                                                    <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#455A64;font-size:14px">
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px">
                                                                         Copyright © 2023 Delivery, All rights
                                                                         reserved.<br><br></p>
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#455A64;font-size:14px">
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:21px;color:#455A64;font-size:14px">
                                                                         32 Xuan Dieu, Hai Chau, Da Nang, Viet Nam</p>
                                                                 </td>
                                                             </tr>

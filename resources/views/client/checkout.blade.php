@@ -42,19 +42,10 @@
                                                         value="{{ $khachHang->so_dien_thoai }}" />
                                                 </fieldset>
                                             </div>
-                                            <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="col-lg-12 col-md-12 col-12">
                                                 <fieldset>
                                                     <label class="label">Address 1</label>
                                                     <input name="dia_chi" type="text" value="" />
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-lg-6 col-md-12 col-12">
-                                                <fieldset>
-                                                    <label class="label">Chọn Phương Thức Thanh Toán</label>
-                                                    <select class="form-control" name="thanh_toan">
-                                                        <option value="0">Thanh toán tự động</option>
-                                                        <option value="-1">Thanh toán tiền mặt</option>
-                                                    </select>
                                                 </fieldset>
                                             </div>
                                         </div>

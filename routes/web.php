@@ -14,6 +14,7 @@ use App\Http\Controllers\TinTucController;
 use App\Http\Controllers\TrangChuController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/auto', [DonHangController::class, 'auto']);
 
 Route::get('/', [TrangChuController::class, 'index']);
 
