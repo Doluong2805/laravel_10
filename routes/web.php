@@ -20,6 +20,8 @@ Route::get('/', [TrangChuController::class, 'index']);
 
 Route::get('/product/{id}', [SanPhamController::class, 'chiTiet']);
 Route::get('/auth', [KhachHangController::class, 'index']);
+Route::get('/forgot-password', [KhachHangController::class, 'forgotPassword']);
+Route::get('/update-password', [KhachHangController::class, 'updatePassword']);
 Route::post('/register', [KhachHangController::class, 'register']);
 Route::post('/login', [KhachHangController::class, 'login']);
 Route::get('/active/{hash_active}', [KhachHangController::class, 'active']);

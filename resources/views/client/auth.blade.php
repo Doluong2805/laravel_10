@@ -91,6 +91,9 @@
                         </fieldset>
                     </div>
                     <div class="col-12 mt-3">
+                        <a href="#" class="text_14 d-block">Quên Mật Khẩu?</a>
+                    </div>
+                    <div class="col-12 mt-3">
                         <button type="submit" class="btn-primary d-block mt-3 btn-signin">LOGIN</button>
                     </div>
                 </div>

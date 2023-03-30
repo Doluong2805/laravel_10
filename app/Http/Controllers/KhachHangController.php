@@ -92,4 +92,14 @@ class KhachHangController extends Controller
             ]);
         }
     }
+
+    public function forgotPassword()
+    {
+        return view('customer.forgotPassword');
+    }
+
+    public function updatePassword()
+    {
+        return view('customer.updatePassword');
+    }
 }
