@@ -139,7 +139,7 @@
                         .then((res) => {
                             if(res.data.status) {
                                 toastr.success("Đăng nhập thành công!");
-                                window.location.href = '/admin/chuyen-muc/index';
+                                window.location.href = '/admin';
                             } else {
                                 toastr.error("Tài khoản hoặc mật khẩu không đúng!");
                             }

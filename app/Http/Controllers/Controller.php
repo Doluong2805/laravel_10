@@ -20,8 +20,12 @@ class Controller extends BaseController
             return true;
         }
         $groupAdmin  = Quyen::find($admin->id_quyen);
-        $listRule    = explode(',', $groupAdmin->list_rule);
-        return in_array($id, $listRule);
+        if($groupAdmin) {
+            $listRule    = explode(',', $groupAdmin->list_rule);
+            return in_array($id, $listRule);
+        } else {
+            return false;
+        }
     }
 
     public function checkRule_post($id)
@@ -31,7 +35,11 @@ class Controller extends BaseController
             return true;
         }
         $groupAdmin  = Quyen::find($admin->id_quyen);
-        $listRule    = explode(',', $groupAdmin->list_rule);
-        return in_array($id, $listRule);
+        if($groupAdmin) {
+            $listRule    = explode(',', $groupAdmin->list_rule);
+            return in_array($id, $listRule);
+        } else {
+            return false;
+        }
     }
 }

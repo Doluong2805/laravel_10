@@ -31,7 +31,7 @@ class AdminSeeder extends Seeder
                 'ngay_sinh'         =>  '1997-04-01',
                 'so_dien_thoai'     =>  '0906666666',
                 'id_quyen'          =>   1,
-                'is_master'          =>  1,
+                'is_master'          =>  0,
             ],
         ]);
     }
