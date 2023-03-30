@@ -8,8 +8,10 @@ use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\HoaDonNhapKhoController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\NhaCungCapController;
+use App\Http\Controllers\QuyenController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ThongKeController;
 use App\Http\Controllers\TinTucController;
 use App\Http\Controllers\TrangChuController;
 use Illuminate\Support\Facades\Route;
@@ -65,6 +67,7 @@ Route::get('/customer/login', [KhachHangController::class, 'viewLogin']);
 Route::post('/customer/login', [KhachHangController::class, 'actionLogin']);
 
 Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() { //, 'middleware' => 'authadmin'
+    Route::get('/', [AdminController::class, 'viewHome']);
     // Route của Chuyên Mục
     Route::group(['prefix' => '/chuyen-muc'], function() {
         Route::get('/index', [ChuyenMucController::class, 'index']);
@@ -139,12 +142,29 @@ Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() { /
         Route::get('/getChuyenMuc', [ConfigController::class, 'getChuyenMuc']);
         Route::get('/getSanPham', [ConfigController::class, 'getSanPham']);
     });
+
     Route::group(['prefix' => '/don-hang'], function() {
         Route::get('/', [DonHangController::class, 'viewDH']);
         Route::get('/data', [DonHangController::class, 'getDataDonHang']);
         Route::get('/chi-tiet/{id}', [DonHangController::class, 'chiTietDonHangAdmin']);
         Route::post('/giao-hang', [DonHangController::class, 'changeGiaoHang']);
 
+    });
+
+    Route::group(['prefix' => '/thong-ke'], function() {
+        Route::get('/', [ThongKeController::class, 'index']);
+        Route::post('/', [ThongKeController::class, 'search']);
+    });
+
+    Route::group(['prefix' => '/quyen'], function() {
+        Route::get('/', [QuyenController::class, 'index']);
+        Route::get('/data', [QuyenController::class, 'getData']);
+        Route::get('/data-action', [QuyenController::class, 'getAction']);
+
+        Route::post('/create', [QuyenController::class, 'store']);
+        Route::post('/delete', [QuyenController::class, 'destroy']);
+        Route::post('/update', [QuyenController::class, 'update']);
+        Route::post('/update-action', [QuyenController::class, 'updateAction']);
     });
 });
 

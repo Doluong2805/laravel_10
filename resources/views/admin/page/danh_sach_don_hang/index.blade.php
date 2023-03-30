@@ -166,7 +166,11 @@
                 axios
                     .get('/admin/don-hang/chi-tiet/' + id)
                     .then((res) => {
-                        this.list_san_pham = res.data.data;
+                        if(res.data.status) {
+                            this.list_san_pham = res.data.data;
+                        } else {
+                            toastr.error(res.data.message);
+                        }
                     });
             },
 

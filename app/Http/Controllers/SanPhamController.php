@@ -42,11 +42,25 @@ class SanPhamController extends Controller
 
     public function index()
     {
+        $check = $this->checkRule_get(6);
+        if(!$check) {
+            toastr()->error('Bạn không có quyền truy cập chức năng này!');
+            return redirect('/admin');
+        }
+
         return view('admin.page.san_pham.index_vue');
     }
 
     public function store(TaoSanPhamRequest $request)
     {
+        $check = $this->checkRule_post(7);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $data = $request->all();
 
         SanPham::create($data);
@@ -59,6 +73,12 @@ class SanPhamController extends Controller
 
     public function data()
     {
+        $check = $this->checkRule_get(6);
+        if(!$check) {
+            toastr()->error('Bạn không có quyền truy cập chức năng này!');
+            return redirect('/admin');
+        }
+
         $data = SanPham::join('chuyen_mucs', 'san_phams.id_chuyen_muc', 'chuyen_mucs.id')
                        ->select('san_phams.*', 'chuyen_mucs.ten_chuyen_muc')
                        ->get();
@@ -70,6 +90,14 @@ class SanPhamController extends Controller
 
     public function destroy(DeleteSanPhamRequest $request)
     {
+        $check = $this->checkRule_post(9);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         SanPham::where('id', $request->id)->delete();
 
         return response()->json([
@@ -81,6 +109,14 @@ class SanPhamController extends Controller
 
     public function update(UpdateSanPhamRequest $request)
     {
+        $check = $this->checkRule_post(10);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $data    = $request->all();
         $sanPham = SanPham::find($request->id); // where('id', $request->id)->first();
         $sanPham->update($data);
@@ -93,6 +129,14 @@ class SanPhamController extends Controller
 
     public function search(Request $request)
     {
+        $check = $this->checkRule_post(11);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $data = SanPham::where('ten_san_pham', 'like', '%' . $request->search_sp_serve . '%')
                        ->get();
 

@@ -14,11 +14,25 @@ class NhaCungCapController extends Controller
 {
     public function index()
     {
+        $check = $this->checkRule_get(21);
+        if(!$check) {
+            toastr()->error('Bạn không có quyền truy cập chức năng này!');
+            return redirect('/admin');
+        }
+
         return view('admin.page.nha_cung_cap.index');
     }
 
     public function store(CreateNhaCungCapRequest $request)
     {
+        $check = $this->checkRule_post(22);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $data = $request->all();
 
         NhaCungCap::create($data);
@@ -31,6 +45,12 @@ class NhaCungCapController extends Controller
 
     public function data()
     {
+        $check = $this->checkRule_get(21);
+        if(!$check) {
+            toastr()->error('Bạn không có quyền truy cập chức năng này!');
+            return redirect('/admin');
+        }
+
         $data = NhaCungCap::all();
 
         return response()->json([
@@ -40,6 +60,14 @@ class NhaCungCapController extends Controller
 
     public function destroy(DeleteNhaCungCapRequest $request)
     {
+        $check = $this->checkRule_post(23);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $nhaCungCap = NhaCungCap::where('id', $request->id)->first();
         $nhaCungCap->delete();
 
@@ -51,6 +79,14 @@ class NhaCungCapController extends Controller
 
     public function update(UpdateNhaCungCapRequest $request)
     {
+        $check = $this->checkRule_post(24);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $data    = $request->all();
         // dd($data);
         $nhaCungCap = NhaCungCap::find($request->id);

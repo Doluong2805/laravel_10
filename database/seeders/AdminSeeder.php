@@ -21,7 +21,8 @@ class AdminSeeder extends Seeder
                 'ho_va_ten'         =>  'Nguyễn Quốc Long',
                 'ngay_sinh'         =>  '1999-04-01',
                 'so_dien_thoai'     =>  '0905555555',
-                'id_quyen'          =>  1,
+                'id_quyen'          =>   1,
+                'is_master'          =>  1,
             ],
             [
                 'email'             =>  'quoclongadmin2@gmail.com',
@@ -29,7 +30,8 @@ class AdminSeeder extends Seeder
                 'ho_va_ten'         =>  'Nguyễn Quốc Long 2',
                 'ngay_sinh'         =>  '1997-04-01',
                 'so_dien_thoai'     =>  '0906666666',
-                'id_quyen'          =>  1,
+                'id_quyen'          =>   1,
+                'is_master'          =>  1,
             ],
         ]);
     }

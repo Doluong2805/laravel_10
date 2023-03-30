@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(ConfigSeeder::class);
         $this->call(TinTucSeeder::class);
+        $this->call(ActionSeeder::class);
     }
 }

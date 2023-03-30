@@ -83,6 +83,24 @@
                     <div class="menu-title">Chi Tiết Đơn Hàng</div>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/thong-ke">
+                    <div class="parent-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="menu-title">Thống Kê Bán Hàng</div>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/quyen">
+                    <div class="parent-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div class="menu-title">Phân Quyền</div>
+                </a>
+            </li>
         </ul>
     </nav>
 </div>

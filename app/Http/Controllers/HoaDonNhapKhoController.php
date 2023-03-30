@@ -40,6 +40,12 @@ class HoaDonNhapKhoController extends Controller
 
     public function index($id_nha_cung_cap)
     {
+        $check = $this->checkRule_get(25);
+        if(!$check) {
+            toastr()->error('Bạn không có quyền truy cập chức năng này!');
+            return redirect('/admin');
+        }
+
         // $nhaCungCap = NhaCungCap::where('id', $id_nha_cung_cap)->first();
         $nhaCungCap = NhaCungCap::find($id_nha_cung_cap);
         if($nhaCungCap) {
@@ -62,6 +68,12 @@ class HoaDonNhapKhoController extends Controller
 
     public function data($id_hoa_don_nhap_kho)
     {
+        $check = $this->checkRule_get(25);
+        if(!$check) {
+            toastr()->error('Bạn không có quyền truy cập chức năng này!');
+            return redirect('/admin');
+        }
+
         $data = ChiTietHoaDonNhapKho::where('id_hoa_don_nhap', $id_hoa_don_nhap_kho)->get();
 
         return response()->json([
@@ -72,6 +84,15 @@ class HoaDonNhapKhoController extends Controller
 
     public function store(Request $request)
     {
+        $check = $this->checkRule_post(26);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
+
         $chiTietHoaDon = ChiTietHoaDonNhapKho::where('id_hoa_don_nhap', $request->id_hoa_don_nhap)
                                              ->where('id_san_pham', $request->id_san_pham)
                                              ->first();
@@ -94,6 +115,14 @@ class HoaDonNhapKhoController extends Controller
 
     public function update(UpdateChiTietNhapKhoRequest $request)
     {
+        $check = $this->checkRule_post(27);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $chiTiet = ChiTietHoaDonNhapKho::find($request->id);
         $chiTiet->update([
             'so_luong_nhap'     =>  $request->so_luong_nhap,
@@ -109,6 +138,14 @@ class HoaDonNhapKhoController extends Controller
 
     public function destroy(DeleteChiTietNhapKhoRequest $request)
     {
+        $check = $this->checkRule_post(28);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $chiTiet = ChiTietHoaDonNhapKho::find($request->id);
         $hoaDon  = HoaDonNhapKho::find($chiTiet->id_hoa_don_nhap);
 

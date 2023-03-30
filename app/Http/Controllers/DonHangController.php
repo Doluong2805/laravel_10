@@ -194,10 +194,22 @@ class DonHangController extends Controller
 
     public function viewDH()
     {
+        $check = $this->checkRule_get(31);
+        if(!$check) {
+            toastr()->error('Bạn không có quyền truy cập chức năng này!');
+            return redirect('/admin');
+        }
+
         return view('admin.page.danh_sach_don_hang.index');
     }
     public function getDataDonHangAdmin()
     {
+        $check = $this->checkRule_get(31);
+        if(!$check) {
+            toastr()->error('Bạn không có quyền truy cập chức năng này!');
+            return redirect('/admin');
+        }
+
         $khachHang = Auth::guard('customer')->user();
 
         $data = DonHang::where('id_khach_hang', $khachHang->id)->get();
@@ -209,25 +221,42 @@ class DonHangController extends Controller
     }
     public function chiTietDonHangAdmin($id)
     {
+        $check = $this->checkRule_get(32);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $data = ChiTietBanHang::where('id_don_hang', $id)
                                     ->join('san_phams', 'chi_tiet_ban_hangs.id_san_pham', 'san_phams.id')
                                     ->select('chi_tiet_ban_hangs.*', 'san_phams.ten_san_pham', 'san_phams.slug_san_pham', 'san_phams.hinh_anh', 'san_phams.gia_ban', 'san_phams.gia_khuyen_mai')
                                     ->get();
 
         return response()->json([
+            'status' => true,
             'data' => $data
         ]);
     }
 
     public function changeGiaoHang(Request $request)
     {
+        $check = $this->checkRule_post(34);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $donHang = DonHang::find($request->id);
         if($donHang){
             $donHang->giao_hang = $request->giao_hang;
             $donHang->save();
 
             return response()->json([
-                'status' => 1,
+                'status' => true,
                 'message' => 'Đổi trạng thái thành công',
             ]);
         }

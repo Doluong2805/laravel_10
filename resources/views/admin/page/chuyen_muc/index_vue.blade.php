@@ -149,9 +149,11 @@
             axios
                 .post('/admin/chuyen-muc/create', paramObj)
                 .then((res) => {
-                    if(res.data.xxx) {
+                    if(res.data.status) {
                         toastr.success(res.data.message);
                         this.loadData();
+                    } else {
+                        toastr.error(res.data.message);
                     }
                 })
                 .catch((res) => {
@@ -176,19 +178,6 @@
                         toastr.error(v[0]);
                     });
                 });
-        },
-
-        changeStatus(id){
-            axios
-                .get('/admin/chuyen-muc/change-status/' + id)
-                .then((res) => {
-                    if(res.data.status) {
-                        toastr.success(res.data.message);
-                        this.loadData();
-                    }else{
-                        toastr.success(res.data.message);
-                    }
-                })
         },
 
         changeStatus(id){

@@ -109,6 +109,8 @@ new Vue({
                     if(res.data.status) {
                         toastr.success(res.data.message);
                         window.location.href = '/admin/nha-cung-cap/index';
+                    } else {
+                        toastr.error(res.data.message);
                     }
                 })
                 .catch((res) => {
@@ -117,9 +119,11 @@ new Vue({
                     });
                 });
         },
+
         format(number) {
             return new Intl.NumberFormat('vi-VI', { style: 'currency', currency: 'VND' }).format(number);
         },
+
         loadSanPham() {
             axios
                 .get('/admin/san-pham/data')
@@ -127,6 +131,7 @@ new Vue({
                     this.dsSanPham = res.data.data;
                 });
         },
+
         loadNhapKho() {
             axios
                 .get('/admin/nhap-kho/data/' + this.id_hoa_don_nhap_kho)
@@ -149,6 +154,7 @@ new Vue({
                     });
                 });
         },
+
         add(id, name) {
             var paramObj = {
                 'id_san_pham'       :   id,
@@ -161,6 +167,8 @@ new Vue({
                     if(res.data.status) {
                         toastr.success(res.data.message);
                         this.loadNhapKho();
+                    } else {
+                        toastr.error(res.data.message);
                     }
                 })
                 .catch((res) => {
@@ -169,6 +177,7 @@ new Vue({
                     });
                 });
         },
+
         update(v) {
             axios
                 .post('/admin/nhap-kho/update', v)
@@ -176,6 +185,8 @@ new Vue({
                     if(res.data.status) {
                         // toastr.success(res.data.message);
                         this.loadNhapKho();
+                    } else {
+                        toastr.error(res.data.message);
                     }
                 })
                 .catch((res) => {
@@ -184,6 +195,7 @@ new Vue({
                     });
                 });
         },
+
         destroy(v) {
             axios
                 .post('/admin/nhap-kho/delete', v)

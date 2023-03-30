@@ -19,6 +19,7 @@ class Admin extends Authenticatable
         'ngay_sinh',
         'so_dien_thoai',
         'id_quyen',
+        'is_master',
         'hash_word',
     ];
 }

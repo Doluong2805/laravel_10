@@ -220,6 +220,8 @@ new Vue({
                         $("#formdata").trigger("reset");
                         instances['mo_ta'].setData('');
                         $("#holder").html('');
+                    } else {
+                        toastr.error(res.data.message);
                     }
                 })
                 .catch((res) => {
@@ -228,6 +230,7 @@ new Vue({
                     });
                 });
         },
+
         loadChuyenMuc() {
             axios
                 .get('/admin/chuyen-muc/data')
@@ -245,27 +248,16 @@ new Vue({
         stringToArray(str) {
             return str.split(",");
         },
+
         deleteSanPham() {
             axios
                 .post('/admin/san-pham/delete', this.sp_delete)
                 .then((res) => {
-                    toastr.success(res.data.message);
-                    this.loadSanPham();
-                })
-                .catch((res) => {
-                    $.each(res.response.data.errors, function(k, v) {
-                        toastr.error(v[0]);
-                    });
-                });
-        },
-        updateSanPham() {
-            this.sp_edit.hinh_anh = $("#iloveu").val();
-            axios
-                .post('/admin/san-pham/update', this.sp_edit)
-                .then((res) => {
                     if(res.data.status) {
                         toastr.success(res.data.message);
                         this.loadSanPham();
+                    } else {
+                        toastr.error(res.data.message);
                     }
                 })
                 .catch((res) => {
@@ -274,6 +266,26 @@ new Vue({
                     });
                 });
         },
+
+        updateSanPham() {
+            this.sp_edit.hinh_anh = $("#iloveu").val();
+            axios
+                .post('/admin/san-pham/update', this.sp_edit)
+                .then((res) => {
+                    if(res.data.status) {
+                        toastr.success(res.data.message);
+                        this.loadSanPham();
+                    } else {
+                        toastr.error(res.data.message);
+                    }
+                })
+                .catch((res) => {
+                    $.each(res.response.data.errors, function(k, v) {
+                        toastr.error(v[0]);
+                    });
+                });
+        },
+
         edit(v) {
             this.sp_edit = v;
             CKEDITOR.instances['mo_ta_edit'].setData(v.mo_ta);

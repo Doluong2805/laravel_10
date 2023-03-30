@@ -11,11 +11,23 @@ class ConfigController extends Controller
 {
     public function index()
     {
+        $check = $this->checkRule_get(29);
+        if(!$check) {
+            toastr()->error('Bạn không có quyền truy cập chức năng này!');
+            return redirect('/admin');
+        }
+
         return view('admin.page.cau_hinh.index');
     }
 
     public function getData()
     {
+        $check = $this->checkRule_get(29);
+        if(!$check) {
+            toastr()->error('Bạn không có quyền truy cập chức năng này!');
+            return redirect('/admin');
+        }
+
         $data = Config::orderByDESC('id')->first();
         // $data->list_bestsale = explode(',', $data->list_bestsale);
         // $data->list_sale = explode(',', $data->list_sale);
@@ -26,6 +38,14 @@ class ConfigController extends Controller
 
     public function store(Request $request)
     {
+        $check = $this->checkRule_post(30);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
         $data = $request->all();
         $listBS = implode(',', $request->listBS);
         $listS = implode(',', $request->listS);
@@ -88,6 +108,7 @@ class ConfigController extends Controller
     }
     public function getSanPham()
     {
+
         $sanPham = SanPham::get();
         return response()->json([
             'data'  => $sanPham

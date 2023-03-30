@@ -184,6 +184,7 @@
                         this.list = res.data.data;
                     });
             },
+
             add() {
                 var paramObj = {};
                 $.each($('#formdata').serializeArray(), function(_, kv) {
@@ -198,8 +199,12 @@
                 axios
                     .post('/admin/nha-cung-cap/create', paramObj)
                     .then((res) => {
-                        toastr.success(res.data.message);
-                        this.loadData();
+                        if(res.data.status) {
+                            toastr.success(res.data.message);
+                            this.loadData();
+                        } else {
+                            toastr.error(res.data.message);
+                        }
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function(k, v) {
@@ -207,6 +212,7 @@
                         });
                     });
             },
+
             updateNCC() {
                 console.log(123);
                 var paramObj = {};
@@ -222,9 +228,13 @@
                 axios
                     .post('/admin/nha-cung-cap/update', paramObj)
                     .then((res) => {
-                        toastr.success(res.data.message);
-                        this.loadData();
-                        $('#updateModal').modal('hide');
+                        if(res.data.status) {
+                            toastr.success(res.data.message);
+                            this.loadData();
+                            $('#updateModal').modal('hide');
+                        } else {
+                            toastr.error(res.data.message);
+                        }
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function(k, v) {
@@ -232,13 +242,18 @@
                         });
                     });
             },
+
             DeleteNCC() {
                 axios
                     .post('/admin/nha-cung-cap/delete', this.destroy)
                     .then((res) => {
-                        toastr.success(res.data.message);
-                        this.loadData();
-                        $('#deleteModal').modal('hide');
+                        if (res.data.status) {
+                            toastr.success(res.data.message);
+                            this.loadData();
+                            $('#deleteModal').modal('hide');
+                        } else {
+                            toastr.error(res.data.message);
+                        }
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function(k, v) {
@@ -246,6 +261,7 @@
                         });
                     });
             },
+
             timMST() {
                 var paramObj = {
                     'mst'   :   this.ma_so_thue,

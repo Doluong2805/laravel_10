@@ -266,7 +266,11 @@
                             toastr.success('Đã xóa tin tức thành công!');
                             this.loadTinTuc();
                         } else {
-                            toastr.error('Có lỗi không mong muốn!');
+                            if (res.data.message) {
+                                toastr.error(res.data.message);
+                            } else {
+                                toastr.error('Có lỗi không mong muốn!');
+                            }
                         }
                     })
                     .catch((res) => {
@@ -275,6 +279,7 @@
                         });
                     });
             },
+
             showUpdate(v) {
                 this.update_tin = v;
                 CKEDITOR.instances['update_mo_ta_chi_tiet'].setData(v.mo_ta_chi_tiet);
@@ -282,6 +287,7 @@
                 var text = '<img src="'+ v.hinh_anh + '" style="margin-top:15px;max-height:100px;">'
                 $("#holder_update").html(text);
             },
+
             capNhatTinTuc() {
                 this.update_tin.mo_ta_chi_tiet = CKEDITOR.instances['update_mo_ta_chi_tiet'].getData();
                 this.update_tin.slug_bai_biet = this.slug_edit;
@@ -293,7 +299,11 @@
                             toastr.success('Đã cập nhật thành công!');
                             this.loadTinTuc();
                         } else {
-                            toastr.error('Có lỗi không mong muốn!');
+                            if (res.data.message) {
+                                toastr.error(res.data.message);
+                            } else {
+                                toastr.error('Có lỗi không mong muốn!');
+                            }
                         }
                     })
                     .catch((res) => {
@@ -306,10 +316,15 @@
                 axios
                     .get('/admin/tin-tuc/change-status/' + id)
                     .then((res) => {
-                        this.loadTinTuc();
-                        toastr.success('Đã đổi trạng thái thành công!');
+                        if (res.data.status) {
+                            toastr.success('Đã đổi trạng thái thành công!');
+                            this.loadTinTuc();
+                        } else {
+                            toastr.error(res.data.message);
+                        }
                     });
             },
+
             toSlug(str) {
                 // Chuyển hết sang chữ thường
                 str = str.toLowerCase();
@@ -337,6 +352,7 @@
                 // return
                 return str;
             },
+
             chuyenDoiSlug(){
                 this.slug = this.toSlug(this.ten_tin_tuc);
             },
