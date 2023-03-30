@@ -28,7 +28,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/chuyen-muc/index">
+                <a class="nav-link" href="/admin/chuyen-muc/index-vue">
                     <div class="parent-icon">
                         <i class="fa-solid fa-bars"></i>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTaiKhoanAdminRequest;
 use App\Models\Admin;
+use App\Models\Quyen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -79,8 +80,8 @@ class AdminController extends Controller
             toastr()->error('Bạn không có quyền truy cập chức năng này!');
             return redirect('/admin');
         }
-
-        return view('admin.page.tai_khoan.index_vue');
+        $list_quyen = Quyen::all();
+        return view('admin.page.tai_khoan.index_vue', compact('list_quyen'));
     }
 
     public function data()
@@ -91,7 +92,8 @@ class AdminController extends Controller
             return redirect('/admin');
         }
 
-        $data = Admin::get();
+        $data = Admin::leftjoin('quyens', 'quyens.id', 'admins.id_quyen')
+                     ->select('admins.*', 'quyens.ten_quyen')->get();
 
         return response()->json([
             'data'  => $data,
@@ -114,5 +116,12 @@ class AdminController extends Controller
         return response()->json([
             'status'    => $check,
         ]);
+    }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        toastr()->success('Đã Đăng xuất thành công!');
+        return redirect('/admin/login');
     }
 }

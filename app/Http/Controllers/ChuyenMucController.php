@@ -107,7 +107,6 @@ class ChuyenMucController extends Controller
                 'message' => 'Bạn không có quyền truy cập chức năng này!',
             ]);
         }
-
         $chuyenMuc = ChuyenMuc::where('id', $id)->first(); // ChuyenMuc::find($id);
         if($chuyenMuc) {
             $chuyenMuc->tinh_trang = !$chuyenMuc->tinh_trang;

@@ -20,13 +20,6 @@ class QuyenController extends Controller
 
     public function store(ThemMoiQuyenRequest $request)
     {
-        $check = $this->checkRule_post(15);
-        if(!$check) {
-            return response()->json([
-                'status'  => false,
-                'message' => 'Bạn không có quyền truy cập chức năng này!',
-            ]);
-        }
         $slug = Str::slug($request->ten_quyen);
         $check = Quyen::where('slug', $slug)->first();
         if(!$check) {

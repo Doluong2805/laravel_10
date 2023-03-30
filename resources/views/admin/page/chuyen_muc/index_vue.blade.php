@@ -171,6 +171,8 @@
                         toastr.success(res.data.message);
                         $('#editModal').modal('hide');
                         this.loadData();
+                    } else {
+                        toastr.error(res.data.message);
                     }
                 })
                 .catch((res) => {
@@ -188,7 +190,7 @@
                         toastr.success(res.data.message);
                         this.loadData();
                     }else{
-                        toastr.success(res.data.message);
+                        toastr.error(res.data.message);
                     }
                 })
         },
@@ -202,7 +204,7 @@
                         $('#deleteModal').modal('hide');
                         this.loadData();
                     }else{
-                        toastr.success(res.data.message);
+                        toastr.error(res.data.message);
                     }
                 })
         },

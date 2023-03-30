@@ -70,6 +70,7 @@ Route::post('/customer/login', [KhachHangController::class, 'actionLogin']);
 
 Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() { //, 'middleware' => 'authadmin'
     Route::get('/', [AdminController::class, 'viewHome']);
+    Route::get('/logout', [AdminController::class, 'logout']);
     // Route của Chuyên Mục
     Route::group(['prefix' => '/chuyen-muc'], function() {
         Route::get('/index', [ChuyenMucController::class, 'index']);
