@@ -108,6 +108,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'authadmin'], function() { /
 
         Route::get('/data', [AdminController::class, 'data']);
         Route::post('/create-ajax', [AdminController::class, 'create_ajax']);
+        Route::post('/update', [AdminController::class, 'update']);
+        Route::post('/delete', [AdminController::class, 'destroy']);
     });
     // Route của Tin Tức
     Route::group(['prefix' => '/tin-tuc'], function() {

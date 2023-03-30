@@ -48,7 +48,7 @@
                     <div class="parent-icon">
                         <i class="fa-solid fa-store"></i>
                     </div>
-                    <div class="menu-title">Nhập Kho</div>
+                    <div class="menu-title">Nhập Nhà Cung Cấp/Nhập Kho</div>
                 </a>
             </li>
             <li class="nav-item">

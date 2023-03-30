@@ -52,8 +52,8 @@
                                 </td>
                                 <td class="text-center align-middle">
                                     <button class="btn btn-info" v-on:click="cap_quyen = value, getPhanQuyenDetail(value.list_rule)">Cấp Quyền</button>
-                                    <button class="btn btn-primary" v-on:click="detail_quyen = value" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa-solid fa-pen-to-square" style="margin-left: 4px"></i></button>
-                                    <button class="btn btn-danger" v-on:click="detail_quyen = value" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-trash" style="margin-left: 4px"></i></button>
+                                    <button class="btn btn-primary" v-on:click="getDetail(value)" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa-solid fa-pen-to-square" style="margin-left: 4px"></i></button>
+                                    <button class="btn btn-danger" v-on:click="getDetail(value)" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-trash" style="margin-left: 4px"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -206,6 +206,10 @@
                 .then((res) => {
                     this.list_quyen = res.data.data;
                 });
+            },
+
+            getDetail(value) {
+                this.detail_quyen = Object.assign({}, value);
             },
 
             delete_quyen() {

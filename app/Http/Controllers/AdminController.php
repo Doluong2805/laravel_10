@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTaiKhoanAdminRequest;
+use App\Http\Requests\DeleteTaiKhoanRequest;
 use App\Models\Admin;
 use App\Models\Quyen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
+use PhpParser\Node\Expr\FuncCall;
 
 class AdminController extends Controller
 {
@@ -123,5 +126,50 @@ class AdminController extends Controller
         Auth::guard('admin')->logout();
         toastr()->success('Đã Đăng xuất thành công!');
         return redirect('/admin/login');
+    }
+
+    public function update(Request $request)
+    {
+        $check = $this->checkRule_post(10);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+
+        $data = $request->all();
+        $admin = Admin::find($request->id);
+        $admin->update($data);
+        return response()->json([
+            'status'    => true,
+            'message' => 'Cập nhập tài khoản thành công!',
+        ]);
+    }
+
+    public function destroy(DeleteTaiKhoanRequest $request)
+    {
+        $check = $this->checkRule_post(9);
+        if(!$check) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không có quyền truy cập chức năng này!',
+            ]);
+        }
+        $admin =  Admin::find($request->id);
+
+        $check = Auth::guard('admin')->user();
+        if($admin->id == $check->id || $admin->is_master == 1) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Bạn không thể xóa tài khoản này!',
+            ]);
+        }
+
+        $admin->delete();
+        return response()->json([
+            'status'    => true,
+            'message' => 'Xóa nhân viên thành công!',
+        ]);
     }
 }
