@@ -112,6 +112,9 @@
                                         </fieldset>
                                     </div>
                                     <div class="col-12 mt-3">
+                                        <a href="/forgot-password" class="text_14 d-block">Quên Mật Khẩu?</a>
+                                    </div>
+                                    <div class="col-12 mt-3">
                                         <button data-bs-dismiss="modal" type="submit" class="btn-primary d-block mt-3 btn-signin">LOGIN</button>
                                     </div>
                                 </div>

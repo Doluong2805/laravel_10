@@ -111,7 +111,6 @@ class ChuyenMucController extends Controller
         if($chuyenMuc) {
             $chuyenMuc->tinh_trang = !$chuyenMuc->tinh_trang;
             $chuyenMuc->save();
-
             return response()->json([
                 'status' => true,
             ]);
