@@ -100,7 +100,7 @@
                                 <td class="align-middle">@{{ v.gia_ban }}</td>
                                 <td class="align-middle text-nowrap">@{{ v.ten_chuyen_muc }}</td>
                                 <td class="align-middle text-nowrap">
-                                    <template v-if="v.trang_thai">
+                                    <template v-if="v.trang_thai == 1">
                                         <button class="btn btn-primary">Còn Kinh Doanh</button>
                                     </template>
                                     <template v-else>
@@ -154,7 +154,7 @@
                                         </template>
                                     </select>
                                     <label>Tình trạng</label>
-                                    <select name="trang_thai"class="form-control">
+                                    <select v-model="sp_edit.trang_thai"class="form-control">
                                         <option value="1">Còn kinh doanh</option>
                                         <option value="0">Dừng kinh doanh</option>
                                     </select>
@@ -269,6 +269,7 @@ new Vue({
 
         updateSanPham() {
             this.sp_edit.hinh_anh = $("#iloveu").val();
+            console.log(this.sp_edit);
             axios
                 .post('/admin/san-pham/update', this.sp_edit)
                 .then((res) => {
